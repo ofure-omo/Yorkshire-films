@@ -14,6 +14,16 @@ and open the template in the editor.
 
 
         <h2> Lily was here....</h2>
+        <h2> So was Claire...</h2>
+       
+        <p style="text-align:center;"> Yorkshire. </p>
+
+        <p style="text-align:center;"> We gave the world Yorkshire Tea, the Bronte sisters, stainless steel, Wensleydale cheese, Sean Bean, and most gloriously of all, the Yorkshire pudding.</p>
+
+        <p style="text-align:center;"> You’d think we could rest on our laurels after that, but we kept on pushing boundaries like an old man rolling down a hill in a tin bath. </p>
+
+        <p style="text-align:center;"> Here you’ll find some of examples of the talent and beauty to be found in this amazing region. The films available to borrow from this library have all been filmed or based in Yorkshire. Some are gritty and dark, some wild and romantic, some shocking and funny, but all are great examples of why Yorkshire is brilliant.</p>
+          
         <?php        ?>
     </body>
 </html>
