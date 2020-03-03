@@ -25,7 +25,8 @@ and open the template in the editor.
 
         <p style="text-align:center;"> Here you’ll find some of examples of the talent and beauty to be found in this amazing region. The films available to borrow from this library have all been filmed or based in Yorkshire. Some are gritty and dark, some wild and romantic, some shocking and funny, but all are great examples of why Yorkshire is brilliant.</p>
         
-         <h3> Amrita showed up and scratched her head </h3> 
+         <h3> Amrita showed up and scratched her head </h3>
+         <h3> Amrita take2</h3>
         <?php        ?>
     </body>
 </html>
