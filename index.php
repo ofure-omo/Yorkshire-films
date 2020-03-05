@@ -12,7 +12,7 @@ and open the template in the editor.
     <body>
         <h1>Welcome to a library of Yorkshire Films! </h1>
         <h2> This is brought to you by The Yorkshire Puddings </h2>
-        <h3> 140g plain flour, 4 eggs, 200ml milk and 5 ambitous coders </h3>
+        <h3> 140g plain flour, 4 eggs, 200ml milk, and 5 ambitious coders </h3>
 
         <h2> Lily was here....</h2>
         <h2> So was Claire...</h2>
@@ -27,6 +27,7 @@ and open the template in the editor.
         
          <h3> Amrita showed up and scratched her head </h3>
          <h3> Amrita take2</h3>
+    <marquee><h3> Gabby spun around for a bit </h3></marquee>
         <?php        ?>
     </body>
 </html>
