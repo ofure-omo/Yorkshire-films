@@ -1,3 +1,8 @@
+<?php        
+
+include 'AutoLoader.php';
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -28,6 +33,16 @@ and open the template in the editor.
          <h3> Amrita showed up and scratched her head </h3>
          <h3> Amrita take2</h3>
     <marquee><h3> Gabby spun around for a bit </h3></marquee>
-        <?php        ?>
+        
+        <?php        
+        //Testing if AutoLoader function has worked
+        $member1 = new Member("p.sue", "Peggy","Sue" , "email@things.com", "21-02-1990" , "01826482736");
+        
+        echo $member1->getTel().PHP_EOL;
+        echo $member1->Welcome();
+       
+        //end of Autoloader test - this can be removed
+        
+        ?>
     </body>
 </html>
