@@ -1,6 +1,6 @@
 <?php
 
-abstract class Users implements Borrowed{
+abstract class Users {
     protected $username;
     protected $password;
     protected $userfirstname;
