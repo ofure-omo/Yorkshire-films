@@ -145,6 +145,15 @@ footer{
     
 }
 
+#email {
+    font-size: 15px;
+    font-style: italic;
+}
+
+#password {
+      font-size: 15px;
+    font-style: italic;
+}
 #submit {
     text-align: center;
     background-color: rgb(240, 102, 102);
@@ -152,7 +161,8 @@ footer{
 }
 
 #submit a:hover {
-    background-color: rgb(88, 2, 2);
+    color: rgb(88, 2, 2);
+ 
 }
 
 .forgotten-pass {
@@ -171,6 +181,36 @@ input {
     box-sizing: border-box;
 }
 
+.register {
+    text-decoration: none;
+    color: white;
+    padding:10px 15px 10px 15px; 
+    background-color: black;
+    border-radius: 7px;
+    width: 60%;
+
+}
+
+.register a:hover {
+    text-decoration: none;
+    color: #ff6666;
+
+    
+}
+
+.create-acc {
+    margin-top: 40px;
+    display: felx;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.registeracc {
+    color: black;
+}
+
+   
 footer {
     position: relative;
     left: 0;
