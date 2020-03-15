@@ -1,7 +1,7 @@
 <?php
 
 
-class Film implements Borrowed{
+class Film {
 
     protected $filmtitle;
     protected $filmlength;

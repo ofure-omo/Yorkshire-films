@@ -7,7 +7,7 @@ include 'AutoLoader.php';
 
 <html>
     <head>
-        <title> Yorkshire films homepage </title>
+        <title> Yorkshire films - Your account </title>
         <link rel=stylesheet href="account.css">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -80,9 +80,12 @@ $member1 ->setPassword("hello345");
         
         
        <!------------details accordion block ----------->    
-        
-        <button class="accordion">Your details</button>
+
+           
+        <button class="accordion">View your details</button>
 <div class="panel">
+    
+   <h2>Your details</h2>  
 
     <table class="table table-striped">
         <tbody>
@@ -128,7 +131,12 @@ $member1 ->setPassword("hello345");
 </table>  
 </div>
 
-  <div class="loantable"
+       
+   <!------------loan table block ----------->      
+        <button class="accordion">View your loan history</button>
+<div class="panel">
+       
+
    <h2>Your loan history</h2>          
 <table class="table table-striped">
         <tbody>    
@@ -156,7 +164,8 @@ $member1 ->setPassword("hello345");
  <label for="r4"><span class="fa fa-star"></label>
   <input type="radio" id="r5" name="rg5">
  <label for="r5"><span class="fa fa-star"></label>
-</div>
+
+        </div>
         
         
        
