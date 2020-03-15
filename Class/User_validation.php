@@ -84,7 +84,7 @@ class User_validation {
         $val = ($this->data['password']);
         
          if(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)){//regular expression
-                $this->addError('username', 'Username must be between 6 and 12 characters and alphanumeric.');
+                $this->addError('password', 'Username must be between 6 and 12 characters and alphanumeric.');
         }   else {
            echo "";
             }
@@ -93,7 +93,7 @@ class User_validation {
     private function validatePasswordConfirm() {
        $val = ($this->data['password_confirm']);
         
-        if (!$val ==='password') {
+        if ($val !=='password') {
                 $this->addError('password_confirm', 'Your passwords do not match, please try again.'); 
         }   else {
             echo "";
