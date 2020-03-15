@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+html body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.nav {
+    width: 100%;
+}
+
+.nav ul {
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+ul li {
+    display: inline-block;
+    list-style: none;
+    padding: 5px;
+    font-size: 20px;
+}
+
+nav a{
+    display: inline-block;
+    padding: 3.5em;
+    padding-top: 1.7em;
+    padding-bottom: .5em;
+    color: black;
+    text-decoration: none;
+}
+
+.toggle{
+    width: 95%;
+    padding: 10px 20px;
+    background-color: none;
+    text-align: right;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+    display: none;
+}
+
+.nav a:hover{
+    color: red;
+    text-decoration: none;
+}
+
+.main-nav {
+    text-align: center;
+    font-size: .8em;
+    font-weight: bolder;
+
+}
+
+.container {
+color: blue;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    font-size: 1.8em;;
+    font-family: 'Sen', sans-serif;
+}
+
+.carousel {
+    display: flex;
+    max-width: 200px;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 50px;
+
+}
+
+@media screen and (min-width: 480px) {
+    .toogle {
+        display: block;
+    }
+    .ul {
+        width:100%;
+        display:none;
+    }
+    .ul li {
+        display: block;
+        text-align: center;
+    }
+    .nav a:hover {
+        color: red;
+    }
+    .active {
+        display: block;
+    }
+    .carousel {
+        min-width: 800px;
+    }
+}
+
+.popular-fm {
+    text-align: center;
+    font-size: 30px;
+}
+    
+
+
+footer{
+    padding:  40px  40px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    text-decoration: none;
+
+}
+.info-container a{
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bolder;
+    color: black;
+}
+
+.info-container a:hover {
+    color: red;
+}
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

@@ -37,12 +37,15 @@ and open the template in the editor.
         <?php        
         //Testing if AutoLoader function has worked
         $member1 = new Member("p.sue", "Peggy","Sue" , "email@things.com", "21-02-1990" , "01826482736");
+        $film1 = new Film("Rita Sue and Bob Too", "93", "18", "1982", "Available", "0", "Alan Clarke", "Comedy", "Bradford");
+        
         
         echo $member1->getTel().PHP_EOL;
         echo $member1->Welcome();
-       
+        echo $member1 ->borrowedmem();
+        echo $film1->getfilmtitle();
         //end of Autoloader test - this can be removed
-        
+
         ?>
     </body>
 </html>

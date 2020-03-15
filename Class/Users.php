@@ -1,6 +1,6 @@
 <?php
 
-abstract class Users {
+abstract class Users implements Borrowed{
     protected $username;
     protected $password;
     protected $userfirstname;
@@ -94,6 +94,13 @@ abstract class Users {
 
     protected function Welcome(){
         echo "..." . $this->userfirstname. "..." .PHP_EOL;
-    }  
-
+    }
+    
+    function borrowedmem() {
+        echo $this->userfirstname . " " . "you have borrowed";
+    }
+    
+    function borrowedfilm() {
+        return $this->userfirstname;
+    }
 }

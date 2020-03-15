@@ -1,17 +1,17 @@
 <?php
 
 
-class Film {
+class Film implements Borrowed{
 
-    private $filmtitle;
-    private $filmlength;
-    private $filmrating;
-    private $filmyear;
-    private $filmavailability;
-    private $filmloancount;
-    private $filmdirector;
-    private $filmgenre;
-    private $filmtown;
+    protected $filmtitle;
+    protected $filmlength;
+    protected $filmrating;
+    protected$filmyear;
+    protected $filmavailability;
+    protected $filmloancount;
+    protected $filmdirector;
+    protected $filmgenre;
+    protected $filmtown;
  
     function getFilmtitle() {
         return $this->filmtitle;
@@ -125,4 +125,13 @@ class Film {
             echo "Not a valid age rating.";
         }
     }
+    
+    function borrowedfilm() {
+        echo '..' . '...' . $this->filmtitle;
+    }
+    
+    function borrowedmem() {
+        return $this-> filmtitle;
+    }
+  
 }
