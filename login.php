@@ -19,9 +19,10 @@
    
          <!--navbar (normal)-->
            <ul>
-             <li><a href= "home.html">HOME</a></li>
-             <li><a href= "films.html">FILMS</a></li>
-             <li><a href= "login.html">LOG IN</a></li>
+             <li><a href= "home.php">HOME</a></li>
+             <li><a href= "films.php">FILMS</a></li>
+             <li><a href= "login.php">LOG IN</a></li>
+             <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
            </ul>
          </nav>
    
@@ -37,7 +38,7 @@
          </script>
 
          <!--PHP email validation-->
-         <?php/*
+         <?php
 
          $emailErr = "";
          $email="";
@@ -47,7 +48,7 @@
          }
          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
              $emailErr = "Invalid email format";
-         } */  
+         }   
          
         
          
@@ -59,21 +60,22 @@
          <div class= "login-container">
              <div class ="welcome">
              <h1 class="sign-in">SIGN IN</h1>
-             <p class="message">Welcome back to Yorkshire Films <br> Sign in to view the latest Yorkshire films! <br> <a href="createacc.html">Don't have an account?</a></p>
+             <p class="message">Welcome back to Yorkshire Films <br> Sign in to view the latest Yorkshire films! <br> </p>
          </div> 
          
         
-             <form action= "login.php" method="GET" id=form1> 
+             <form action= "login.php" method="post" id=form1> 
          
-                 <input type="text" id="email" class="shadow p-3 mb-5 bg-white rounded form" placeholder="Email" name="email" autofocus required>
-                 <span class="error"></span>
-                 <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password" pattern="[/.+@.+\com/]" required> 
+                 <input type="text" id="email" class="shadow p-3 mb-5 bg-white rounded form" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z]+.com" autofocus required>
+                 <span class="error"><?php echo $emailErr ?></span>
+                 <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password"  required> 
                  <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
-                 <button type="submit" id="submit" value="submit" form="form1" class="form">SUBMIT</button>
-                
-                 
+                 <button type="submit" id="submit" value="submit" form="form1" class="form">SUBMIT</button>    
              </form>
-             
+         
+              <div class="create-acc">
+                  <button type="submit" value="register" class="register" id="create"> <a href="UserReg.php" class="registeracc">CREATE ACCOUNT</a></button>
+              </div>
 
          </div>
 
