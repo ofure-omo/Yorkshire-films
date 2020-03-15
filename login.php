@@ -40,7 +40,7 @@
          <!--PHP email validation-->
          <?php
 
-         $emailErr = "";
+         /*$emailErr = "";
          $email="";
 
          if (empty(filter_input_array(INPUT_POST,"email"))) {
@@ -48,10 +48,12 @@
          }
          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
              $emailErr = "Invalid email format";
-         }   
+         }   */
          
+         /*$email = filter_input(INPUT_POST, ['email'])
+                 if preg_match("[a-z0-9._%+-]+@[a-z]+.com", $subject)
         
-         
+         */
       
          ?>
 
@@ -67,7 +69,7 @@
              <form action= "login.php" method="post" id=form1> 
          
                  <input type="text" id="email" class="shadow p-3 mb-5 bg-white rounded form" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z]+.com" autofocus required>
-                 <span class="error"><?php echo $emailErr ?></span>
+                 <span class="error"></span>
                  <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password"  required> 
                  <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
                  <button type="submit" id="submit" value="submit" form="form1" class="form">SUBMIT</button>    

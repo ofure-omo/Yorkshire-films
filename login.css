@@ -158,10 +158,12 @@ footer{
     text-align: center;
     background-color: rgb(240, 102, 102);
     border-radius: 7px;
+    color: black;
+    font-weight: bolder;
 }
 
 #submit a:hover {
-    color: rgb(88, 2, 2);
+    color: white;
  
 }
 
@@ -188,15 +190,15 @@ input {
     background-color: black;
     border-radius: 7px;
     width: 60%;
+    font-weight: bolder;
 
 }
 
 .register a:hover {
     text-decoration: none;
-    color: #ff6666;
-
-    
+    color: #ff6666;    
 }
+
 
 .create-acc {
     margin-top: 40px;
@@ -207,7 +209,7 @@ input {
 }
 
 .registeracc {
-    color: black;
+    color: white;
 }
 
    
