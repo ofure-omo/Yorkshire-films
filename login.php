@@ -86,7 +86,7 @@
             <div class="info-container">
               <p class="info"><a href="">HELP</a></p>
               <p class="info"><a href="">PRIVACY POLICY</a></p>
-              <p class= "info"><a href="">JOBS</a></p>
+              <p class= "info"><a href="Jobs.php">JOBS</a></p>
             </div>
 
             <div class="social-container">
