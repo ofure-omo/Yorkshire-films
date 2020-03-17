@@ -5,19 +5,19 @@
             //while ($row = mysqli_fetch_array($result))} Necessary for testing if it returns anything
                 $sql = 
                     "SELECT * FROM Films"
-                    //. "INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID"
-                    //. "INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID"
-                    //. "INNER JOIN Towns on Films.fm_TOWN = Towns.twn_ID"
+                    . " INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID"
+                    . " INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID"
+                    . " INNER JOIN Towns on Films.fm_TOWN = Towns.twn_ID"
                     . " WHERE Films.fm_ID = 1;";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);
                 $year = $row['fm_YEAR'];
                 $title = $row['fm_TITLE'];
-                $dir = $row['fm_DIR'];
+                $dir = $row['dir_NAME'];
                 $age = $row['fm_RATING'];
-                $genre = $row['fm_GENRE'];
+                $genre = $row['genre'];
                 $length = $row['fm_LENGTH'];
-                $town = $row['fm_TOWN'];
+                $town = $row['twn_NAME'];
                 $syn = $row['fm_SYNOPSIS'];
                 
 ?>

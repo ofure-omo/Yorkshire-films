@@ -1,3 +1,27 @@
+<?php 
+    include_once 'connection.php';
+   
+            //if(mysqli_num_rows ($result) > 0){
+            //while ($row = mysqli_fetch_array($result))} Necessary for testing if it returns anything
+                $sql = 
+                    "SELECT * FROM Films"
+                    . " INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID"
+                    . " INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID"
+                    . " INNER JOIN Towns on Films.fm_TOWN = Towns.twn_ID"
+                    . " WHERE Films.fm_ID = 3;";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $year = $row['fm_YEAR'];
+                $title = $row['fm_TITLE'];
+                $dir = $row['dir_NAME'];
+                $age = $row['fm_RATING'];
+                $genre = $row['genre'];
+                $length = $row['fm_LENGTH'];
+                $town = $row['twn_NAME'];
+                $syn = $row['fm_SYNOPSIS'];
+                
+?>
+
 <!DOCTYPE html>
 <html>
     <style>
@@ -86,29 +110,29 @@
 
             <br>
             <p style="text-align:center;">  
-                <b>Release date:</b>
+                <b>Year Released:</b> <?php echo $year;?>
             </p>
             <p style="text-align:center;">  
-                <b>Title:</b>
+                <b>Title:</b> <?php echo $title;?>
             </p>
             <p style="text-align:center;">  
-                <b>Director:</b> 
+                <b>Director:</b> <?php echo $dir;?>
             </p>    
             <p style="text-align:center;">  
-                <b>Age Rating:</b> 
+                <b>Age Rating:</b> <?php echo $age;?>
             </p>
             <p style="text-align:center;">  
-                <b>Genre:</b> 
+                <b>Genre:</b> <?php echo $genre;?>
             </p>
             <p style="text-align:center;">  
-                <b>Length:</b> 
+                <b>Length:</b> <?php echo $length . "min";?>
             </p>
             <p style="text-align:center;">  
-                <b>Location:</b> 
+                <b>Location:</b> <?php echo $town;?>
             </p>
             <br>
             <p style="width:700px; text-align:justify; margin-left:10cm">
-                <b>Synopsis: </b> 
+                <b>Synopsis: </b> <?php echo $syn;?>
             </p>
         </body>
     </section>
