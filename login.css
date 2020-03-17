@@ -75,6 +75,11 @@ nav a{
     .active {
         display: block;
     }
+    
+    .login-container {
+        width:auto;
+        height: auto;
+    }
 
 }
 
@@ -121,11 +126,6 @@ footer{
     color: rgb(240, 102, 102);
 }
 
-.message a:hover{
-    text-decoration: none;
-    color: rgb(153, 9, 9);
-}
-
 .login-container {
     background: rgba(0, 0, 0, 0.096);
     margin: 70px 400px 0 400px;
@@ -145,6 +145,7 @@ footer{
     
 }
 
+
 #email {
     font-size: 15px;
     font-style: italic;
@@ -156,15 +157,16 @@ footer{
 }
 #submit {
     text-align: center;
-    background-color: rgb(240, 102, 102);
+    background-color: black;
     border-radius: 7px;
-    color: black;
+    color: white;
     font-weight: bolder;
 }
 
-#submit a:hover {
+#submit:hover {
     color: white;
- 
+    background-color: rgb(240, 102, 102);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .forgotten-pass {
@@ -194,9 +196,16 @@ input {
 
 }
 
-.register a:hover {
+.register:hover {
     text-decoration: none;
-    color: #ff6666;    
+    color: white;  
+    background-color: rgb(240, 102, 102);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.registeracc:hover {
+    text-decoration: none;
+    color: white;
 }
 
 
@@ -205,14 +214,15 @@ input {
     display: felx;
     justify-content: center;
     text-align: center;
-    color: white;
+    text-decoration: none;
+
 }
 
 .registeracc {
     color: white;
+    text-decoration: none;
 }
 
-   
 footer {
     position: relative;
     left: 0;

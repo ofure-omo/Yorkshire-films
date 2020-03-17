@@ -20,7 +20,7 @@
          <!--navbar (normal)-->
            <ul>
              <li><a href= "home.php">HOME</a></li>
-             <li><a href= "films.php">FILMS</a></li>
+             <li><a href= "Films.php">FILMS</a></li>
              <li><a href= "login.php">LOG IN</a></li>
              <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
            </ul>
@@ -67,6 +67,7 @@
          
         
              <form action= "login.php" method="post" id=form1> 
+
          
                  <input type="text" id="email" class="shadow p-3 mb-5 bg-white rounded form" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z]+.com" autofocus required>
                  <span class="error"></span>
@@ -78,6 +79,7 @@
               <div class="create-acc">
                   <button type="submit" value="register" class="register" id="create"> <a href="UserReg.php" class="registeracc">CREATE ACCOUNT</a></button>
               </div>
+
 
          </div>
 

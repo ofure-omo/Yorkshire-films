@@ -67,9 +67,11 @@ color: blue;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    height: 200px;
+    height: 150px;
     font-size: 1.8em;;
     font-family: 'Sen', sans-serif;
+    background-image: url('Images/blackbackground.png');
+    color: white;
 }
 
 .carousel {
@@ -78,9 +80,59 @@ color: blue;
     justify-content: center;
     margin: 0 auto;
     padding-top: 50px;
+}
+
+.carousel-inner {
+    max-width: 100%;
+    height:auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.d-block {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  color: black;    
+  font-size: 25px;
+    text-transform: uppercase;
+    padding-bottom: 500px;
+}
+
+
+.carousel-item:hover .middle {
+  opacity: 1;
 
 }
 
+.carousel-item:hover .d-block {
+opacity: 0.3;
+}
+
+.film-des {
+    margin-top: 400px;
+    color: black;
+}
+
+/*.desc-container{
+  text-align: center;
+  padding: 10px 20px;
+}
+*/
 @media screen and (min-width: 480px) {
     .toogle {
         display: block;
@@ -107,6 +159,8 @@ color: blue;
 .popular-fm {
     text-align: center;
     font-size: 30px;
+    padding-top: 50px;
+    text-transform: uppercase;
 }
     
 
@@ -131,6 +185,30 @@ footer{
 
 .info-container a:hover {
     color: red;
+}
+
+.view-more {
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px;
+
+
+}
+    
+.view-more-link:hover{
+    background-color: rgb(240, 102, 102);
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.view-more-link {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: black;
+    padding: 10px 15px 10px 15px;
+    border-radius: 7px;
 }
 
 footer {

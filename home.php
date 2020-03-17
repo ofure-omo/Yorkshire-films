@@ -21,7 +21,7 @@
       <!--navbar (normal)-->
         <ul>
           <li><a href= "home.php">HOME</a></li>
-          <li><a href= "films.php">FILMS</a></li>
+          <li><a href= "Films.php">FILMS</a></li>
           <li><a href= "login.php">LOG IN</a></li>
            <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
         </ul>
@@ -50,7 +50,7 @@
             <section>
             <h1 class = "popular-fm"> Most Popular Films</h1>
 
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style='width:400px'>
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -58,37 +58,45 @@
                 </ol>
                 <div class="carousel-inner" style='width:400px'>
                   <div class="carousel-item active">
-                    <img src="Images/fm_ID15_ChickenRun.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>CHICKEN RUN</h5>
-                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                      <img src="Images/fm_ID15_ChickenRun.jpg" class="d-block w-100" id="overlay" alt="chicken run">
+                    <div class="carousel-caption d-none d-md-block ">
+                        <div class="middle">
+                      <p class="caption">Chicken Run</p>
+                      
+                      </div> 
+             
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img src="Images/fm_ID8_JaneEyre.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>JANE EYRE</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <div class="middle">
+                          <h5></h5>
+                      <p class='caption'>Jane Eyre</p>
+                      </div>
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img src="Images/fm_ID6_Wuthering.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>WUTHERING HEIGHTS</h5>
-                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                      <div class="middle"><h5></h5>
+                      <p class= 'caption'>Wuthering Heights</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev"  style='margin-left:200px'>
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next" style='margin-right:200px'>
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
               </div>
             </section>
+            
+            <h2 class="view-more"><a href="Films.php" class="view-more-link"> VIEW MORE</a></h2>
 
             <!--footer-->
             <footer>
@@ -104,5 +112,6 @@
                 <span class="icon" src="" href="" ></span>
               </div>
             </footer>
+
     </body>
 </html>
