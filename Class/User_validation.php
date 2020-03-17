@@ -32,8 +32,8 @@ class User_validation {
     private function validateFirstname() { //private functions to be run only within this class, then passed into function validateForm above
         
         $val = trim($this->data['firstname']);
-        
-        if(!preg_match('/^[a-zA-Z0-9]{1,20}$/', $val)){//regular expression
+        $cleanFirstname=filter_var($val, FILTER_SANITIZE_STRING);
+        if(!preg_match('/^[a-zA-Z0-9]{1,20}$/', $cleanFirstname)){//regular expression
         $this->addError('firstname', 'firstname must be between 1 and 20 characters and alphanumeric.');
         }   else {
             echo "";
@@ -43,8 +43,8 @@ class User_validation {
     
     private function validateSurname() {
        $val = trim($this->data['surname']);
-        
-        if(!preg_match('/^[a-zA-Z0-9]{1,20}$/', $val)){//regular expression
+       $cleanSurname=filter_var($val, FILTER_SANITIZE_STRING);
+        if(!preg_match('/^[a-zA-Z0-9]{1,20}$/', $cleanSurname)){//regular expression
                 $this->addError('surname', 'Surname must be between 1 and 20 characters and alphanumeric.');
         }   else {
             echo "";
@@ -53,8 +53,8 @@ class User_validation {
     
     private function validateEmail() {
       $val = trim($this->data['email']);
-        
-        if(!filter_var($val, FILTER_VALIDATE_EMAIL)) {
+      $cleanEmail = filter_var($val, FILTER_SANITIZE_EMAIL);
+        if(!filter_var($cleanEmail, FILTER_VALIDATE_EMAIL)) {
                 $this->addError('email', 'Email must be a valid email.');
         }   else {
             echo "";
@@ -63,8 +63,8 @@ class User_validation {
     
     private function validateTel() {
         $val = trim($this->data['tel']);
-        
-        if(!preg_match('/^[0-9]{9,13}$/', $val)){//regular expression
+        $cleanTel = filter_var($val,FILTER_SANITIZE_NUMBER_INT);
+        if(!preg_match('/^[0-9]{9,13}$/', $cleanTel)){//regular expression
                 $this->addError('tel', 'Telephone must be between 9 and 13 characters and numeric.');
         }   else {
             echo "";
@@ -73,8 +73,9 @@ class User_validation {
     
     private function validateUsername() {
        $val = trim($this->data['username']);
+       $cleanUsername = filter_var($val, FILTER_SANITIZE_STRING);
         //insert code to check if username already exists in DB when connections learned
-        if(!preg_match('/^[a-zA-Z0-9]{3,20}$/', $val)){//regular expression
+        if(!preg_match('/^[a-zA-Z0-9]{3,20}$/', $cleanUsername)){//regular expression
                 $this->addError('username', 'Username must be between 3 and 20 characters and alphanumeric.');
         }   else {
             echo "";
@@ -83,7 +84,7 @@ class User_validation {
         
     private function validatePassword() {
         $val = ($this->data['password']);
-        
+        //hashing with sanitise this
          if(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)){//regular expression
                 $this->addError('password', 'Username must be between 6 and 12 characters and alphanumeric.');
         }   else {
@@ -94,6 +95,7 @@ class User_validation {
     private function validatePasswordConfirm() {
        $val = ($this->data['password_confirm']);
        $val2 =  ($this->data['password']);
+       //hashing with sanitise this
         if ($val ==$val2) {
             echo "";
         }   else {    
@@ -103,15 +105,17 @@ class User_validation {
         
     private function validateLibCode() {
         $val = ($this->data['lib_code']);
-        filter_var($val, FILTER_SANITIZE_STRING);
-        
+        $cleanLibCode = filter_var($val, FILTER_SANITIZE_STRING);
         if (empty($val)){
-            echo "";
-        } else if($val== "eyup"){
-            $val= "admin";
+            $userTypeMember = $cleanLibCode;
+            echo "You're a new member!"; //This is just to test the code and can be removed
+        } else if($cleanLibCode== "eyup"){
+            $userTypeAdmin = $cleanLibCode;
+            echo "You're a new Admin!"; //This is just to test the code and can be removed
         } else if 
-        ($val== "eebygum") {
-            $val="librarian";  
+        ($cleanLibCode= "eebygum") {
+            $userTypeLibrarian = $cleanLibCode; 
+            echo "You're a new Librarian!"; //This is just to test the code and can be removed
         } else { //add if empty code to prevent error message
         $this->addError('lib_code', 'That code is incorrect, please try again or contact an administrator');
         }

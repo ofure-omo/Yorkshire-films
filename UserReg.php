@@ -1,6 +1,7 @@
 <?php        
 
 include 'AutoLoader.php';
+include_once 'connection.php';
 
     if(isset($_POST['submit'])) {
         echo "<h3>Welcome $_POST[firstname]</h3>"; 
@@ -181,7 +182,9 @@ include 'AutoLoader.php';
 </html>
 
 <?php
-
+ //if (empty($errors)){
+ //insert clean variables into  db
+ //}
 
 
 
