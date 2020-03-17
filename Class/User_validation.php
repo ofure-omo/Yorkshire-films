@@ -93,18 +93,21 @@ class User_validation {
     
     private function validatePasswordConfirm() {
        $val = ($this->data['password_confirm']);
-        
-        if ($val =='password') {
-            echo "";}
-            else {
-         $this->addError('password_confirm', 'Your passwords do not match, please try again.'); 
-        }
+       $val2 =  ($this->data['password']);
+        if ($val ==$val2) {
+            echo "";
+        }   else {    
+            $this->addError('password_confirm', 'Your passwords do not match, please try again.'); 
+    }
     }
         
     private function validateLibCode() {
         $val = ($this->data['lib_code']);
         filter_var($val, FILTER_SANITIZE_STRING);
-        if($val== "eyup"){
+        
+        if (empty($val)){
+            echo "";
+        } else if($val== "eyup"){
             $val= "admin";
         } else if 
         ($val== "eebygum") {

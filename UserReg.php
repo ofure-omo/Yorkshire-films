@@ -6,10 +6,7 @@ include 'AutoLoader.php';
         echo "<h3>Welcome $_POST[firstname]</h3>"; 
           $validation = new User_validation($_POST);
           $errors = $validation->validateForm();
-    } else if (!empty($_POST)) {
-        echo "<h4>You have not submitted any data to the server</h4>";
-        }
-        
+    }
 ?>
 
 
