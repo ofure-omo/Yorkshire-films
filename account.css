@@ -145,5 +145,7 @@ input:checked ~ label {
 h1{padding:40px; text-align: center;}
 
 #submit-button{
-    margin-bottom:40px;
+    margin-bottom:20px;
 }
+
+.film-form{background-color: ghostwhite;padding:20px;margin-bottom: 40px;}

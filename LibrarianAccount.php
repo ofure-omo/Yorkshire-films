@@ -1,5 +1,6 @@
 <?php
 include 'AutoLoader.php';
+include 'LibrarianAccountDBConnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,70 +20,6 @@ include 'AutoLoader.php';
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     </head>
 
-
-<!----------------------DATABASE CONNECTION & FORM SUBMIT --------->
-    <?php
-    const DB_DSN = 'mysql:host=localhost;dbname=filmDatabase';
-    const DB_USER = 'root';
-    const DB_PASS = '';
-
-
-    try {
-        $pdo = new PDO(DB_DSN, DB_USER, DB_PASS);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die($e->getMessage());
-    }
-
-    $fmtable = $pdo->query("SELECT * FROM Films");
-    $memtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Member')");
-
-    if (isset($_POST["submit"]) && !is_numeric($_POST['filmLength'])) {
-        $msg = '<div class="alert alert-danger alert-dismissible fade show">
-                <strong>Error! Film length must be entered as number of minutes, i.e. 95 </strong>
-               <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-    } elseif (isset($_POST["submit"]) && !is_numeric($_POST['filmYear'])) {
-        $msg = '<div class="alert alert-danger alert-dismissible fade show">
-                <strong>Error! Film year must be in number format, i.e. 2009  </strong>
-             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-    } else  {
-          $filmID = filter_input(INPUT_POST, 'filmID', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmLength = filter_input(INPUT_POST, 'filmLength', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmName = filter_input(INPUT_POST, 'filmName', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmYear = filter_input(INPUT_POST, 'filmYear', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmRating = filter_input(INPUT_POST, 'filmRating', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmDirector = filter_input(INPUT_POST, 'filmDirector', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmGenre = filter_input(INPUT_POST, 'filmGenre', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmTown = filter_input(INPUT_POST, 'filmTown', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmAvailability = filter_input(INPUT_POST, 'filmAvailability', FILTER_SANITIZE_SPECIAL_CHARS);
-        //$filmLoanCount = filter_input(INPUT_POST, 'filmLoanCount', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmSynopsis = filter_input(INPUT_POST, 'filmSynopsis', FILTER_SANITIZE_SPECIAL_CHARS);
-        $filmLoanCount =0;
-
-
-        $new_fm = $pdo->prepare("INSERT INTO Films (fm_ID, fm_TITLE, fm_LENGTH, fm_RATING, fm_YEAR, fm_DIR, fm_GENRE, fm_TOWN, fm_AVAILABILITY, fm_LOANCOUNT, fm_SYNOPSIS)
-              VALUES ( :id, :name, :length, :rating, :year, :director, :genre, :town, :availability, :loancount, :synopsis)");
-
-        $new_fm->execute([
-             'id' => $filmID,
-            'name' => $filmName,
-            'length' => $filmLength,
-            'rating' => $filmRating,
-            'year' => $filmYear,
-            'director' => $filmDirector,
-            'genre' => $filmGenre,
-            'town' => $filmTown,
-            'availability' => $filmAvailability,
-             'loancount' => $filmLoanCount,
-            'synopsis' => $filmSynopsis
-                ]
-        );
-
-        $msg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!  </strong>
-             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-    }
-    ?>
 
 
 <!-----------------------BODY------------------------>  
@@ -167,9 +104,75 @@ echo "</table>";
 ?>
                     </tbody>
                 </table>
-            </div>
+           
+            
+<!-----------------------Add member form------------------------>  
 
 
+<div class="film-form"> 
+               
+                
+             <h2>Add a Member</h2>
+
+                
+                
+                <div><?php echo $memMsg; ?></div>
+
+                
+                
+                <form name="memForm" class="memForm" id="memForm" action = "" method = "POST">
+
+                    
+                <div class="form-group">
+                <div class="row">
+                <div class="col">
+                First Name:<input  type="text" class="form-control" placeholder="First Name"  name="firstName" id="firstName" value="" required autofocus="true" />              
+                </div> 
+                <div class="col">
+                Last Name:<input  type="text" class="form-control" placeholder="Last Name"  name="lastName" id="lastName" value="" required autofocus="true" />        
+              </div>
+                </div></div>
+                <br/>
+                
+                
+                
+                <div class="form-group">
+                <div class="row">
+                <div class="col">
+                User Name:<input  type="text" class="form-control" placeholder="Username"  name="userName" id="userName" value="" required autofocus="true" />          
+                   </div> 
+                <div class="col">
+                Email:<input  type="text" class="form-control" placeholder="Email"  name="email" id="email" value="" required autofocus="true" />        
+              </div>
+                </div></div>
+                <br/>
+                
+                
+               <div class="form-group">
+                <div class="row">
+                <div class="col">
+                Date of Birth:<input  type="text" class="form-control" placeholder="Date of Birth"  name="dob" id="dob" value="" required autofocus="true" />          
+                   </div> 
+                <div class="col">
+                Telephone No.:<input  type="text" class="form-control" placeholder="Telephone No."  name="telNo" id="telNo" value="" required autofocus="true" />        
+              </div>
+                </div></div>
+                <br/> 
+               
+                
+
+                
+              
+           <input type="submit" value=" Add Member " name="memSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
+
+                </form> 
+                </div>
+
+ </div>
+            
+            
+            
+            
 
 <!------------film catalogue accordion block ----------->  
 
@@ -214,19 +217,23 @@ foreach ($fmtable as $row) {
 }
 echo "</table>";
 ?>
-
-<!-----------------------Add film form------------------------>  
-                 </tbody>
+</tbody>
                 </table>
-                <h2>Add a film</h2>
+<!-----------------------Add film form------------------------>  
+
+
+<div class="film-form"> 
+               
+                
+             <h2>Add a film</h2>
 
                 
                 
-                <div><?php echo $msg; ?></div>
+                <div><?php echo $fmMsg; ?></div>
 
                 
                 
-                <form name="filmForm" id="filmForm" action = "" method = "POST">
+                <form name="filmForm" class="filmForm" id="filmForm" action = "" method = "POST">
 
                 Film name:<input  type="text" class="form-control" placeholder="Enter the film name"  name="filmName" id="filmName" value="" required autofocus="true" />             
                 <br/>     
@@ -239,6 +246,7 @@ echo "</table>";
                 Film length:<input  type="text" class="form-control" placeholder="Enter length of film"  name="filmLength" id="filmLength" value="" required autofocus="true" />          
                 </div>
                 </div>
+                     </div>
                 <br/>  
                 
                 <div class="form-group">
@@ -255,7 +263,7 @@ echo "</table>";
                 <div class="col">
                 Year:<input  type="text" class="form-control" placeholder="Enter year made"  name="filmYear" id="filmYear" value="" required autofocus="true" />     
                 </div>
-                </div>
+                </div></div>
                 <br/>
                 
 
@@ -293,7 +301,7 @@ echo "</table>";
                         <option value="15">Sport</option>
                     </select>
                     </div>
-                    </div>
+                    </div></div>
                     <br/>
 
                     
@@ -324,28 +332,29 @@ echo "</table>";
                         <option value="15">Yorkshire</option>
                     </select>
                 </div>
-                </div>
+                </div></div>
                 <br/>
                 
                 Synopsis:<textarea id="filmSynopsis" class="form-control" placeholder="Enter film synopsis"  name="filmSynopsis"  value="" required autofocus="true"rows="4" cols="50"></textarea>
                 <br/>
-                <input type="submit" value=" Add Film " name="submit" id="submit-button" class="btn btn-primary" onclick="clearField();" />
+                
+              
+           <input type="submit" value=" Add Film " name="submit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
 
-                </form>   
+                </form> 
+                </div>
+
+
+
+
+
+
+
+                </div>
+                
+           
             </div>
             
-           
-
- 
-            
-            
-            
-            
-            
-        </div>
-
-        
-        
 
 
 <!-----------------------accordion block js------------------------>  
@@ -372,8 +381,22 @@ echo "</table>";
                     document.filmForm.message.value = "";
                 }
             }
+            </script>
+    
+            
+  <!-----------------------hide / show film form------------------------>          
+            
+           <script language="javascript">
+function HideTable()
+{
+  $(".filmForm").hide();
+}
 
-        </script>
+function ShowTable()
+{
+$(".filmForm").show();
+}
+</script>
 
     </body>
 </html>
