@@ -141,3 +141,9 @@ label {
 input:checked ~ label {
   color: orange;
 }
+
+h1{padding:40px; text-align: center;}
+
+#submit-button{
+    margin-bottom:40px;
+}
