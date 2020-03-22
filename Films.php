@@ -130,10 +130,25 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <title>Film Catalogue</title>
+<script>
+    function showFilm(str) {
+  var xhttp;
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("films").innerHTML = this.responseText;
+    }
+  };
+  window.open("fm.php?id="+str, true);
+  
+}
+    </script>
     </head>
     <div class="headerLogo">
         <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
@@ -186,200 +201,283 @@
 
 
             </div>
-            <div class="row">
+            <div class="row" id="films">
                 <div class="column">
+                    <a  onclick="showFilm(1)">
                     <div class="cont">
                         <div class="filterDiv Drama">
-                            <a href="fm_ID1.php">
                                 <img src="Images/fm_ID1_Journeyman.jpg">
-                            </a>
                             <div class="overlay">"Journeyman" by Paddy Considine </br> Drama, 2017</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(2)">
                     <div class="cont">
                         <div class="filterDiv Mystery">
-                            <a href="fm_ID2.php">
                                 <img src="Images/fm_ID2_DarkRiver.jpg">
-                            </a>
                             <div class="overlay">"Dark River" by Clio Barnard </br> Mystery, 2017</div>
                         </div>
                     </div>
+                    </a>
+                   
+                    <a onclick="showFilm(3)">
                     <div class="cont">
                         <div class="filterDiv Drama">
-                            <a href="fm_ID3.php">
                                 <img src="Images/fm_ID3_GodsOwn.jpg">
-                            </a>
                             <div class="overlay">"God's Own Country" by Francis Lee </br> Drama, 2017</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(4)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID4_SelfishGiant.jpg">
                             <div class="overlay">"The Selfish Giant" by Clio Barnard </br> Drama, 2013</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(5)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID5_Lad.jpg">
                             <div class="overlay">"Lad: a Yorkshire Story" by Dan Hartley </br> Drama, 2013</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(6)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID6_Wuthering.jpg">
                             <div class="overlay">"Wuthering Heights" by Andrea Arnold </br> Romance, 2011</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(7)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID7_Tyrannosaur.jpg">
                             <div class="overlay">"Tyrannosaur" by Paddy Considine </br> Drama, 2011</div>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="column">
+                    <a onclick="showFilm(8)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID8_JaneEyre.jpg">
                             <div class="overlay">"Jane Eyre" by Cary Joji Fukunaga </br> Romance, 2011</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(9)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID9_FourLions.jpg">
                             <div class="overlay">"Four Lions" by Christopher Morris </br> Comedy, 2010</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(10)">
                     <div class="cont">
                         <div class="filterDiv Biography">
                             <img src="Images/fm_ID10_DamnedUnited.jpg">
                             <div class="overlay">"The Damned United" by Tom Hooper </br> Biography, 2009</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(11)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID11_MischiefNight.jpg">
                             <div class="overlay">"Mischief Nights" by Penny Woolcock </br> Comedy, 2006</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(12)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID12_HistoryBoys.jpg">
                             <div class="overlay">"The History Boys" by Nicholas Hytner </br> Comedy, 2006</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(13)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID13_MySummer.jpg">
                             <div class="overlay">"My Summer Love" by Pawel Pawlikowski </br> Romance, 2004</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(29)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID29_Bedelia.jpg">
                             <div class="overlay">"Bedelia" by Lance Comfort </br> Romance, 1946</div>
                         </div>
                     </div>
+                    </a>
+                    
                 </div>
                 <div class="column">
+                    
+                    <a onclick="showFilm(14)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID14_CalendarGirls.jpg">
                             <div class="overlay">"Calendar Girls" by Nigel Cole </br> Comedy, 2003</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(15)">
                     <div class="cont">
                         <div class="filterDiv Animation">
                             <img src="Images/fm_ID15_ChickenRun.jpg">
                             <div class="overlay">"Chicken Run" by Peter Lord </br> Animation, 2000</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(16)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID16_AmongGiants.jpg">
                             <div class="overlay">"Among Giants" by Sam Miller </br> Romance, 1998</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(17)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID17_FullMonty.jpg">
                             <div class="overlay">"The Full Monty" by Peter Cattaneo </br> Comedy, 1997</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(18)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID18_BrassedOff.jpg">
                             <div class="overlay">"Brassed Off" by Mark Herman </br> Comedy, 1996</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(19)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID19_AMonth.jpg">
                             <div class="overlay">"A Month in the Country" by Pat O'Connor </br> Drama, 1987</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(20)">
                     <div class="cont">
                         <div class="filterDiv Mystery">
                             <img src="Images/fm_ID20_Wetherby.jpg">
                             <div class="overlay">"Wetherby" by David Hare </br> Mystery, 1985</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(30)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID30_SouthRiding.jpg">
                             <div class="overlay">"South Riding" by Victor Saville </br> Romance, 1938</div>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="column">
+                    
+                    <a onclick="showFilm(21)">
                     <div class="cont">
                         <div class="filterDiv Sci-fi">
                             <img src="Images/fm_ID21_Threads.jpg">
                             <div class="overlay">"Threads" by Mick Jackson </br> Sci-fi, 1984</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(22)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID22_LooksandSmiles.jpg">
                             <div class="overlay">"Looks and Smiles" by Ken Loach </br> Drama, 1981</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(23)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID23_RailwayChildren.jpg">
                             <div class="overlay">"The Railway Children" by Lionel Jeffries </br> Drama, 1970</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(24)">
                     <div class="cont">
                         <div class="filterDiv Drama">
                             <img src="Images/fm_ID24_Kes.jpg">
                             <div class="overlay">"Kes" by Ken Loach </br> Drama, 1969</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(25)">
                     <div class="cont">
                         <div class="filterDiv Comedy">
                             <img src="Images/fm_ID25_BillyLiar.jpg">
                             <div class="overlay">"Billy Liar" by John Schlesinger </br> Comedy, 1963</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(26)">
                     <div class="cont">
                         <div class="filterDiv Sport">
                             <img src="Images/fm_ID26_SportingLife.jpg">
                             <div class="overlay">"This Sporting Life" by Lindsay Anderson </br> Sport, 1963</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(27)">
                     <div class="cont">
                         <div class="filterDiv Romance">
                             <img src="Images/fm_ID27_Room.jpg">
                             <div class="overlay">"Room at the Top" by Jack Clayton </br> Romance, 1959</div>
                         </div>
                     </div>
+                    </a>
+                    
+                    <a onclick="showFilm(28)">
                     <div class="cont">
                         <div class="filterDiv Crime">
                             <img src="Images/fm_ID28_TreadSoftly.jpg">
                             <div class="overlay">"Tread Softly Stranger" by Gordon Parry </br> Crime, 1958</div>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
 
