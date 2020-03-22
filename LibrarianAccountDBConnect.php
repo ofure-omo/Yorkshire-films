@@ -165,10 +165,69 @@
 
 
   
-         
+         /*************** UPDATE FILM FORM**********/ 
+ global $filmUpdateMsg;
+ 
+ 
+    if (isset($_GET['fm_ID'])) {
+        
+        
+        if (isset($_POST['updateFilm']) && !is_numeric($_POST['filmLength'])) {
+        $filmUpdateMsg = '<div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error! Film length must be entered as number of minutes, i.e. 95 </strong>
+               <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $filmUpdateMsg;
+        
+        
+        
+         } elseif (isset($_POST['updateFilm']) && !is_numeric($_POST['filmYear'])) {
+        $filmUpdateMsg = '<div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error! Film year must be in number format, i.e. 2009  </strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $filmUpdateMsg;
+        
+        } elseif (!empty($_POST['updateFilm']))  {   
+
+        
+       
+        
+        
+        
+        $filmID =$_GET['fm_ID'];
+        $filmName = isset($_POST['filmName']) ? $_POST['filmName'] : '';      
+        $filmLength = isset($_POST['filmLength']) ? $_POST['filmLength'] : '';  
+         $filmYear = isset($_POST['filmYear']) ? $_POST['filmYear'] : ''; 
+         $filmGenre = isset($_POST['ilmGenre']) ? $_POST['ilmGenre'] : ''; 
+      $filmRating = isset($_POST['ilmRating']) ? $_POST['ilmRating'] : ''; 
+        $filmDirector = isset($_POST['filmDirector']) ? $_POST['filmDirector'] : ''; 
+        $filmTown  = isset($_POST['filmTown']) ? $_POST['filmTown'] : ''; 
+         $filmAvailability  = isset($_POST['filmAvailability']) ? $_POST['filmAvailability'] : ''; 
+        $filmSynopsis  = isset($_POST['filmSynopsis']) ? $_POST['filmSynopsis'] : ''; 
+          $filmLoanCount =0;
+        
+       
+        
+     
+         $stmt = $pdo->prepare('UPDATE Films SET fm_ID = ?, fm_TITLE =? , fm_LENGTH =? , fm_RATING =? ,fm_YEAR =? , fm_DIR =? , fm_GENRE =?, fm_TOWN =? , fm_AVAILABILITY=?, fm_LOANCOUNT=? , fm_SYNOPSIS =?  WHERE fm_ID = ? ');
+        $stmt->execute(([$filmID,  $filmName, $filmLength,  $filmYear, $filmGenre,   $filmRating,  $filmDirector , $filmTown,$filmAvailability,$filmSynopsis,$filmLoanCount,$_GET['fm_ID']]));
+        
+        
+        $filmUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
+                <strong> <i class="icon fa fa-check"></i> Updated!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $filmUpdateMsg;      
+                
+    }          
+    }
         
        
 
+   
+ 
+         
+
+        
+        
 
     
 

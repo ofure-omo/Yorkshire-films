@@ -82,39 +82,60 @@ include 'LibrarianAccountDBConnect.php';
                         <tr>
                             <td>First name</td>
                             <td><?php echo $member1->getUserfirstname() ?></td>
-                            <td>Edit</td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Second name</td>
                             <td><?php echo $member1->getUsersurname() ?></td>
-                            <td>Edit</td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Email address</td>
                             <td><?php echo $member1->getEmail() ?></td>
-                            <td>Edit</td>
+                           <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Date of birth</td>
                             <td><?php echo $member1->getDob() ?></td>
-                            <td>Edit</td>
+                          <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Telephone number</td>
                             <td><?php echo $member1->getTel() ?></td>
-                            <td>Edit</td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Username</td>
                             <td><?php echo $member1->getUsername() ?></td>
-                            <td>Edit</td>
+                           <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Password</td>
                             <td><?php echo $member1->getPassword() ?></td>
-                            <td>Edit</td>
+                           <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>  
@@ -211,8 +232,8 @@ include 'LibrarianAccountDBConnect.php';
                             <td><?= $film['FM_LOANCOUNT'] ?></td>
 
                             <td class="actions">
-                                <a href="update.php?id=<?= $film['fm_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=<?= $film['fm_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="filmUpdate.php?fm_ID=<?= $film['fm_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?fm_ID=<?= $film['fm_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
 <?php endforeach; ?>
