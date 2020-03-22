@@ -1,7 +1,7 @@
 <?php        
 
 include 'AutoLoader.php';
-include_once 'connection.php';
+include_once 'PDO_connection.php';
 
     if(isset($_POST['submit'])) {
         echo "<h3>Welcome $_POST[firstname]</h3>"; 
