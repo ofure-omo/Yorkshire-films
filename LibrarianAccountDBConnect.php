@@ -1,21 +1,22 @@
 <!----------------------DATABASE CONNECTION & FORM SUBMIT --------->
     <?php
-    const DB_DSN = 'mysql:host=localhost;dbname=filmDatabase';
-    const DB_USER = 'root';
-    const DB_PASS = '';
-    
-    try {
-        $pdo = new PDO(DB_DSN, DB_USER, DB_PASS);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die($e->getMessage());
-    }
-    
+  const DB_DSN = 'mysql:host=localhost;dbname=filmDatabase';
+  const DB_USER = 'root';
+   const DB_PASS = '';
+  
+   try {
+       $pdo = new PDO(DB_DSN, DB_USER, DB_PASS);
+       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   } catch (PDOException $e) {
+       die($e->getMessage());
+  }
+
+    /***************POPULATE MEMBER & FILM TABLES**********/ 
     $fmtable = $pdo->query("SELECT * FROM Films");
     $memtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Member')");
     
     
-   /***************MEMBER FORM**********/ 
+   /***************ADD MEMBER FORM**********/ 
     
  $memMsg='';
  
@@ -48,40 +49,21 @@
                 ]);
 
         $memMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!  </strong>
+                <strong> <i class="icon fa fa-check"></i> Success!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $memMsg;
-    }else
-        
-        $memMsg = '<div class="alert alert-danger alert-dismissible fade show">
-                <strong>Error! Member not added, please fill in form </strong>
-             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-        return $memMsg;
-    //}
+    }
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  /***************FILM FORM**********/ 
+  /*************** ADD FILM FORM**********/ 
     
     $fmMsg='';
  
 
     //function addFilm(){
          global $fmMsg;
-    if (isset($_POST["submit"]) && !is_numeric($_POST['filmLength'])) {
+    if (isset($_POST["fmSubmit"]) && !is_numeric($_POST['filmLength'])) {
         $fmMsg = '<div class="alert alert-danger alert-dismissible fade show">
                 <strong>Error! Film length must be entered as number of minutes, i.e. 95 </strong>
                <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
@@ -126,16 +108,68 @@
                 <strong> <i class="icon fa fa-check"></i> Success!  </strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $fmMsg;
-    }else
+    }
         
-        $fmMsg = '<div class="alert alert-danger alert-dismissible fade show">
-                <strong>Error! Film not added, please fill in form </strong>
+        
+        
+        
+ /*************** UPDATE MEMBER FORM**********/ 
+ global $memUpdateMsg;
+ 
+ 
+    if (isset($_GET['user_ID'])) {
+    if (!empty($_POST['updateMem'])) {
+        
+        $userid =$_GET['user_ID'];
+        $firstName = isset($_POST['firstName']) ? $_POST['firstName'] : '';
+        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] : '';         
+        $userName = isset($_POST['userName']) ? $_POST['userName'] : '';  
+        $email = isset($_POST['email']) ? $_POST['email'] : ''; 
+        $dob = isset($_POST['dob']) ? $_POST['dob'] : ''; 
+        $telNo = isset($_POST['telNo']) ? $_POST['telNo'] : ''; 
+        $userType = 'Member';
+        
+        
+    
+         $stmt = $pdo->prepare('UPDATE Users SET user_ID = ?, user_FN =? , user_SN =? , user_UN =? ,user_EMAIL =? , user_DOB =? , user_TEL =?, user_TYPE =?    WHERE user_ID = ? ');
+        $stmt->execute(([$userid,  $firstName, $lastName,  $userName, $email,  $dob, $telNo ,$userType,$_GET['user_ID']]));
+        
+        
+        $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
+                <strong> <i class="icon fa fa-check"></i> Updated!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-        return $fmMsg;
-    //}
-        
-        
-        
-        
-        
+        return $memUpdateMsg;        
+                
+    }          
+    }
+       
+//    
+//// Get the contact from the contacts table
+//   $check = $pdo->prepare('SELECT * FROM users WHERE user_ID = ?');
+//   $check->execute([$_GET['user_ID']]);
+//  $stmt = $check->fetch(PDO::FETCH_ASSOC);
+//   if (!$stmt) {
+//       
+//        $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
+//                <strong> <i class="icon fa fa-check"></i> Contact doesn\'t exist with that ID!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
+//             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+//      return $memUpdateMsg;   
+//   
+//} else {
+//     $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
+//                <strong> <i class="icon fa fa-check"></i> Contact doesn\'t exist with that ID!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
+//             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+//      return $memUpdateMsg; 
+//};
 
+
+
+  
+         
+        
+       
+
+
+    
+
+       
