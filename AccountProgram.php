@@ -1,6 +1,6 @@
 <!----------------------DATABASE CONNECTION & FORM SUBMIT --------->
     <?php
-  const DB_DSN = 'mysql:host=localhost;dbname=filmDatabase';
+  const DB_DSN = 'mysql:host=localhost;dbname=Yorkshire-Films';
   const DB_USER = 'root';
    const DB_PASS = '';
   
