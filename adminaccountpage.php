@@ -243,63 +243,39 @@ include 'AccountProgram.php';
 
 
   <!-------------------------------ONLOAN LIST------------------------------------------>
-            <button class="accordion">View / Edit Active loan Catalogue</button>
+           <button class="accordion">Current On Loan List</button>
             <div class="panel">     
 
-                <h2>Active Loan Catalogue</h2>          
-                <table class="table table-striped">
+                <h2>Loan List</h2> 
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/#"><i class="fa fa-plus"></i>   Add a loan</a></button>
+                <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Film Name</th>
-                            <th scope="col">Due date</th>
-                            <th scope="col">Loan date</th>
-                            <th scope="col">Borrower username</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">Film Title</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Loan Date</th>
+                            <th scope="col">Username</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>      
 
-                    <tr>
-                        <td>Insert loan ID</td>
-                        <td><?php echo $onloan1->getFilmtitle() ?></td>
-                        <td><?php echo $onloan1->getDuedate() ?></td>
-                        <td><?php echo $onloan1->getLoandate() ?></td>
-                        <td><?php echo $onloan1->getUsername() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>Insert loan ID </td>
-                        <td><?php echo $onloan2->getFilmtitle() ?></td>
-                        <td><?php echo $onloan2->getDuedate() ?></td>
-                        <td><?php echo $onloan2->getLoandate() ?></td>
-                        <td><?php echo $onloan2->getUsername() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-
-
-
+<?php foreach ($loantable as $loan): ?>
+                        <tr>
+                            <td><?= $loan['onloan_ID'] ?></td>
+                            <td><?= $loan['fm_TITLE'] ?></td>
+                            <td><?= $loan['due_DATE'] ?></td>
+                            <td><?= $loan['loan_DATE'] ?></td>
+                            <td><?= $loan['user_UN'] ?></td>
+                            <td class="actions">
+                                <a href="#" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="#" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
+                        </tr>
+<?php endforeach; ?>
                     </tbody>
                 </table>
-                <h2>Add a film to loan</h2>
-                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                    ID: <input  type="text" class="form-control" placeholder=""  name="filmID" id="filmID" value="" required autofocus="true" />          
-                    Film name:<input  type="text" class="form-control" placeholder="Enter the film name"  name="filmName" id="filmName" value="" required autofocus="true" />          
-                    Due date:<input  type="date" class="form-control" placeholder="Enter date film loan expires"  name="dueDate" id="dueDate" value="" required autofocus="true" />          
-                    Loan date:<input  type="date" class="form-control" placeholder="Enter date film loaned"  name="loanDate" id="loanDate" value="" required autofocus="true" />          
-                    Username:<input  type="text" class="form-control" placeholder="Enter borrower's username"  name="userName" id="userName" value="" required autofocus="true" />
-                    Loan Count:<input  type="text" class="form-control" placeholder="Enter film loan count"  name="filmLoanCount" id="filmLoanCount" value="" required autofocus="true" />  
-                    <!--         <button type="button" id="updateButton"
-                            class="btn btn-primary"
-                            onclick="addFilm();">
-                      Add
-                    </button>-->
-
-                    <button type="button" id="updateButton"
-                            class="btn btn-primary">Add film</button>
-                </form>   
 
             </div>
              <!-------------------------------FILM CATALOG------------------------------------------>
