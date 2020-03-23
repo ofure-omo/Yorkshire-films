@@ -1,6 +1,17 @@
 <?php
 include 'AutoLoader.php';
 include 'LibrarianAccountDBConnect.php';
+$stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
+    $stmt->execute([$_GET['user_ID']]);
+    
+    $contact = $stmt->fetch(PDO::FETCH_ASSOC);
+//    if (!$contact) {
+//        exit('Contact doesn\'t exist with that ID!');
+//    
+//} else {
+//    exit('No ID specified!');
+//}
+
 
 
 

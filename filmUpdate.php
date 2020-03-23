@@ -3,7 +3,6 @@ include 'AutoLoader.php';
 include 'LibrarianAccountDBConnect.php';
 
 
-
 ?>
 <!DOCTYPE html>
 <!-----------------------HEAD------------------------>  

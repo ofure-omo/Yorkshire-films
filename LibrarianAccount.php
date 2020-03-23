@@ -212,7 +212,7 @@ include 'LibrarianAccountDBConnect.php';
                             <th scope="col">Genre</th>
                             <th scope="col">Town</th>
                             <th scope="col">Availability</th>
-                            <th scope="col">Loan Count</th>
+                            <th scope="col">Loans</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>   
@@ -225,9 +225,9 @@ include 'LibrarianAccountDBConnect.php';
                             <td><?= $film['fm_LENGTH'] ?></td>
                             <td><?= $film['fm_RATING'] ?></td>
                             <td><?= $film['fm_YEAR'] ?></td>
-                            <td><?= $film['fm_DIR'] ?></td>
-                            <td><?= $film['fm_GENRE'] ?></td>
-                            <td><?= $film['fm_TOWN'] ?></td>
+                            <td><?= $film['dir_NAME'] ?></td>
+                            <td><?= $film['genre'] ?></td>
+                            <td><?= $film['twn_NAME'] ?></td>
                             <td><?= $film['fm_AVAILABILITY'] ?></td>
                             <td><?= $film['FM_LOANCOUNT'] ?></td>
 

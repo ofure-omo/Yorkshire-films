@@ -12,7 +12,12 @@
   }
 
     /***************POPULATE MEMBER & FILM TABLES**********/ 
-    $fmtable = $pdo->query("SELECT * FROM Films");
+    $fmtable = $pdo->query("SELECT Films.fm_ID, Films.fm_TITLE, Films.fm_LENGTH, Films.fm_RATING, Films.fm_YEAR, Directors.dir_NAME, Genres.genre, Towns.twn_NAME, Films.fm_AVAILABILITY, Films.FM_LOANCOUNT, Films.fm_SYNOPSIS  FROM `Films` 
+                            INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID
+                            INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID
+                            INNER JOIN Towns on Films.fm_TOWN = Towns.twn_ID
+                            Order by Films.fm_ID;");
+    
     $memtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Member')");
     
     
@@ -20,8 +25,6 @@
     
  $memMsg='';
  
-
-    
          global $memMsg;
     if (isset($_POST["memSubmit"])) {
           $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -32,8 +35,6 @@
         $telNo = filter_input(INPUT_POST, 'telNo', FILTER_SANITIZE_SPECIAL_CHARS);
         $userType = 'Member';
         
-       
-
 
         $new_mem = $pdo->prepare("INSERT INTO Users ( user_UN,  user_FN, user_SN, user_EMAIL, user_DOB, user_TEL, user_TYPE)
               VALUES (  :username, :userfn, :userln, :email, :dob, :tel, :type)");
@@ -49,7 +50,7 @@
                 ]);
 
         $memMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php" >View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $memMsg;
     }
@@ -61,19 +62,19 @@
     $fmMsg='';
  
 
-    //function addFilm(){
+   
          global $fmMsg;
     if (isset($_POST["fmSubmit"]) && !is_numeric($_POST['filmLength'])) {
         $fmMsg = '<div class="alert alert-danger alert-dismissible fade show">
                 <strong>Error! Film length must be entered as number of minutes, i.e. 95 </strong>
                <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $fmMsg;
-    } elseif (isset($_POST["submit"]) && !is_numeric($_POST['filmYear'])) {
+    } elseif (isset($_POST["fmSubmit"]) && !is_numeric($_POST['filmYear'])) {
         $fmMsg = '<div class="alert alert-danger alert-dismissible fade show">
                 <strong>Error! Film year must be in number format, i.e. 2009  </strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $fmMsg;
-    } elseif (isset($_POST["submit"])) {
+    } elseif (isset($_POST["fmSubmit"])) {
           $filmID = filter_input(INPUT_POST, 'filmID', FILTER_SANITIZE_SPECIAL_CHARS);
         $filmLength = filter_input(INPUT_POST, 'filmLength', FILTER_SANITIZE_SPECIAL_CHARS);
         $filmName = filter_input(INPUT_POST, 'filmName', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -105,7 +106,12 @@
                 ]);
 
         $fmMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!  </strong>
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a></strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $fmMsg;
+    } elseif (isset($_POST["fmSubmit"])) {
+        $fmMsg = '<div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!   </strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $fmMsg;
     }
@@ -130,37 +136,20 @@
         $userType = 'Member';
         
         
-    
-         $stmt = $pdo->prepare('UPDATE Users SET user_ID = ?, user_FN =? , user_SN =? , user_UN =? ,user_EMAIL =? , user_DOB =? , user_TEL =?, user_TYPE =?    WHERE user_ID = ? ');
+        $stmt = $pdo->prepare('UPDATE Users SET user_ID = ?, user_FN =? , user_SN =? , user_UN =? ,user_EMAIL =? , user_DOB =? , user_TEL =?, user_TYPE =?    WHERE user_ID = ? ');
         $stmt->execute(([$userid,  $firstName, $lastName,  $userName, $email,  $dob, $telNo ,$userType,$_GET['user_ID']]));
         
         
         $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Updated!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
+                <strong> <i class="icon fa fa-check"></i> Updated!         <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $memUpdateMsg;        
                 
     }          
     }
        
-//    
-//// Get the contact from the contacts table
-//   $check = $pdo->prepare('SELECT * FROM users WHERE user_ID = ?');
-//   $check->execute([$_GET['user_ID']]);
-//  $stmt = $check->fetch(PDO::FETCH_ASSOC);
-//   if (!$stmt) {
-//       
-//        $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
-//                <strong> <i class="icon fa fa-check"></i> Contact doesn\'t exist with that ID!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
-//             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-//      return $memUpdateMsg;   
-//   
-//} else {
-//     $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
-//                <strong> <i class="icon fa fa-check"></i> Contact doesn\'t exist with that ID!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
-//             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-//      return $memUpdateMsg; 
-//};
+    
+
 
 
 
@@ -196,14 +185,14 @@
         $filmID =$_GET['fm_ID'];
         $filmName = isset($_POST['filmName']) ? $_POST['filmName'] : '';      
         $filmLength = isset($_POST['filmLength']) ? $_POST['filmLength'] : '';  
-         $filmYear = isset($_POST['filmYear']) ? $_POST['filmYear'] : ''; 
-         $filmGenre = isset($_POST['ilmGenre']) ? $_POST['ilmGenre'] : ''; 
-      $filmRating = isset($_POST['ilmRating']) ? $_POST['ilmRating'] : ''; 
+        $filmYear = isset($_POST['filmYear']) ? $_POST['filmYear'] : ''; 
+        $filmGenre = isset($_POST['ilmGenre']) ? $_POST['ilmGenre'] : ''; 
+        $filmRating = isset($_POST['ilmRating']) ? $_POST['ilmRating'] : ''; 
         $filmDirector = isset($_POST['filmDirector']) ? $_POST['filmDirector'] : ''; 
         $filmTown  = isset($_POST['filmTown']) ? $_POST['filmTown'] : ''; 
-         $filmAvailability  = isset($_POST['filmAvailability']) ? $_POST['filmAvailability'] : ''; 
+        $filmAvailability  = isset($_POST['filmAvailability']) ? $_POST['filmAvailability'] : ''; 
         $filmSynopsis  = isset($_POST['filmSynopsis']) ? $_POST['filmSynopsis'] : ''; 
-          $filmLoanCount =0;
+        $filmLoanCount =0;
         
        
         
@@ -213,7 +202,7 @@
         
         
         $filmUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Updated!  <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a> </strong>
+                <strong> <i class="icon fa fa-check"></i> Updated!         <a href="javascript:history.go(-2)">View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $filmUpdateMsg;      
                 
