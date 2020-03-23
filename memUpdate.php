@@ -1,18 +1,12 @@
 <?php
 include 'AutoLoader.php';
 include 'LibrarianAccountDBConnect.php';
+
+/****PRE POPULATE EXISTING USER DETAILS****/
 $stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
     $stmt->execute([$_GET['user_ID']]);
     
     $contact = $stmt->fetch(PDO::FETCH_ASSOC);
-//    if (!$contact) {
-//        exit('Contact doesn\'t exist with that ID!');
-//    
-//} else {
-//    exit('No ID specified!');
-//}
-
-
 
 
 ?>
@@ -20,7 +14,7 @@ $stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
 <!-----------------------HEAD------------------------>  
 <html>
     <head>
-        <title>Yorkshire films - Update Member</title>
+        <title>Yorkshire films - Update User</title>
         <link rel=stylesheet href="account.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
@@ -95,10 +89,10 @@ $stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                 <div class="form-group">
                 <div class="row">
                 <div class="col">
-                First Name:<input  type="text" class="form-control" placeholder="First Name"  name="firstName" id="firstName" value="" required autofocus="true" />              
+                First Name:<input  type="text" class="form-control" placeholder="First Name"  name="firstName" id="firstName" value="<?=$contact['user_FN']?>" required autofocus="true" />              
                 </div> 
                 <div class="col">
-                Last Name:<input  type="text" class="form-control" placeholder="Last Name"  name="lastName" id="lastName" value="" required autofocus="true" />        
+                Last Name:<input  type="text" class="form-control" placeholder="Last Name"  name="lastName" id="lastName" value="<?=$contact['user_SN']?>" required autofocus="true" />        
               </div>
                 </div></div>
                 <br/>
@@ -108,10 +102,10 @@ $stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                 <div class="form-group">
                 <div class="row">
                 <div class="col">
-                User Name:<input  type="text" class="form-control" placeholder="Username"  name="userName" id="userName" value="" required autofocus="true" />          
+                User Name:<input  type="text" class="form-control" placeholder="Username"  name="userName" id="userName" value="<?=$contact['user_UN']?>" required autofocus="true" />          
                    </div> 
                 <div class="col">
-                Email:<input  type="text" class="form-control" placeholder="Email"  name="email" id="email" value="" required autofocus="true" />        
+                Email:<input  type="text" class="form-control" placeholder="Email"  name="email" id="email" value="<?=$contact['user_EMAIL']?>" required autofocus="true" />        
               </div>
                 </div></div>
                 <br/>
@@ -120,10 +114,10 @@ $stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                <div class="form-group">
                 <div class="row">
                 <div class="col">
-                Date of Birth:<input  type="text" class="form-control" placeholder="Date of Birth"  name="dob" id="dob" value="" required autofocus="true" />          
+                Date of Birth:<input  type="text" class="form-control" placeholder="Date of Birth"  name="dob" id="dob" value="<?=$contact['user_DOB']?>" required autofocus="true" />          
                    </div> 
                 <div class="col">
-                Telephone No.:<input  type="text" class="form-control" placeholder="Telephone No."  name="telNo" id="telNo" value="" required autofocus="true" />        
+                Telephone No.:<input  type="text" class="form-control" placeholder="Telephone No."  name="telNo" id="telNo" value="<?=$contact['user_TEL']?>" required autofocus="true" />        
               </div>
                 </div></div>
                 <br/> 

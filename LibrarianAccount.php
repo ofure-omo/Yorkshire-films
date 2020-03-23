@@ -1,6 +1,6 @@
 <?php
 include 'AutoLoader.php';
-include 'LibrarianAccountDBConnect.php';
+include 'AccountProgram.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,17 +23,17 @@ include 'LibrarianAccountDBConnect.php';
         <script type="text/javascript" src="custom_table_edit.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     </head>
-<!-------------------------------BODY------------------------------------------>
+    <!-------------------------------BODY------------------------------------------>
     <body>
         <div class="container-sm">
 
-<!-----------------------------HAMBURGER NAVBAR------------------------------------------>
+            <!-----------------------------HAMBURGER NAVBAR------------------------------------------>
             <nav class = "nav main-nav">
                 <div class="toggle">
                     <i class= "fa fa-bars" aria-hidden="true"></i>
                 </div>
 
-<!-------------------------------NAVBAR------------------------------------------>
+                <!-------------------------------NAVBAR------------------------------------------>
                 <ul>
                     <li><a href= "home.html">HOME</a></li>
                     <li><a href= "films.html">FILMS</a></li>
@@ -41,7 +41,7 @@ include 'LibrarianAccountDBConnect.php';
                 </ul>
             </nav>
 
-<!-------------------------------HAMBURGER JS------------------------------------------>
+            <!-------------------------------HAMBURGER JS------------------------------------------>
             <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
             <script type="text/javascript">
@@ -52,8 +52,8 @@ include 'LibrarianAccountDBConnect.php';
                 });
             </script>
 
-            
-<!-------------------------------SLOGAN------------------------------------------>
+
+            <!-------------------------------SLOGAN------------------------------------------>
             <div class="flex-container">
                 <div>BROWSE</div>
                 <div>BORROW</div>
@@ -62,12 +62,13 @@ include 'LibrarianAccountDBConnect.php';
             </div>
 
 
-<!-------------------------------WELCOME MESSAGE------------------------------------------>
+            <!-------------------------------WELCOME MESSAGE------------------------------------------>
             <h1>Hello, firstname! Welcome to the the Librarian Portal</h1>
 
 
-<!-------------------------------YOUR DETAILS------------------------------------------>  
-            <?php $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
+            <!-------------------------------YOUR DETAILS------------------------------------------>  
+            <?php
+            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
 
             $member1->setPassword("hello345")
             ?>
@@ -98,7 +99,7 @@ include 'LibrarianAccountDBConnect.php';
                         <tr>
                             <td>Email address</td>
                             <td><?php echo $member1->getEmail() ?></td>
-                           <td class="actions">
+                            <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
@@ -106,7 +107,7 @@ include 'LibrarianAccountDBConnect.php';
                         <tr>
                             <td>Date of birth</td>
                             <td><?php echo $member1->getDob() ?></td>
-                          <td class="actions">
+                            <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
@@ -124,7 +125,7 @@ include 'LibrarianAccountDBConnect.php';
                         <tr>
                             <td>Username</td>
                             <td><?php echo $member1->getUsername() ?></td>
-                           <td class="actions">
+                            <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
@@ -132,7 +133,7 @@ include 'LibrarianAccountDBConnect.php';
                         <tr>
                             <td>Password</td>
                             <td><?php echo $member1->getPassword() ?></td>
-                           <td class="actions">
+                            <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
@@ -143,7 +144,7 @@ include 'LibrarianAccountDBConnect.php';
 
 
 
-<!-------------------------------MEMBER LIST------------------------------------------>
+            <!-------------------------------MEMBER LIST------------------------------------------>
 
             <button class="accordion">View / Edit Members List</button>
             <div class="panel">     
@@ -188,7 +189,7 @@ include 'LibrarianAccountDBConnect.php';
 
 
 
-<!-------------------------------FILM CATALOG------------------------------------------>
+            <!-------------------------------FILM CATALOG------------------------------------------>
 
 
 
@@ -244,9 +245,15 @@ include 'LibrarianAccountDBConnect.php';
 
 
             </div>
+            
+            
+   
+
+            </div>
+              
 
 
-<!-------------------------------ACCORDION BLOCK JS------------------------------------------>
+            <!-------------------------------ACCORDION BLOCK JS------------------------------------------>
             <script>
                 var acc = document.getElementsByClassName("accordion");
                 var i;

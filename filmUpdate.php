@@ -2,7 +2,11 @@
 include 'AutoLoader.php';
 include 'LibrarianAccountDBConnect.php';
 
-
+/****PRE POPULATE EXISTING FILM DETAILS****/
+$stmt = $pdo->prepare('SELECT * FROM Films WHERE fm_ID = ?');
+    $stmt->execute([$_GET['fm_ID']]);
+    
+    $film = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <!-----------------------HEAD------------------------>  
@@ -79,15 +83,15 @@ include 'LibrarianAccountDBConnect.php';
                 
                 <form name="filmForm" class="filmForm" id="filmForm" action = "" method = "POST">
 
-                Film name:<input  type="text" class="form-control" placeholder="Enter the film name"  name="filmName" id="filmName" value="" required autofocus="true" />             
+                Film name:<input  type="text" class="form-control" placeholder="Enter the film name"  name="filmName" id="filmName" value="<?=$film['fm_TITLE']?>" required autofocus="true" />             
                 <br/>     
                 <div class="form-group">
                 <div class="row">
                 <div class="col">
-                Film ID:<input  type="text" class="form-control" placeholder="Enter the film id"  name="filmID" id="filmID" value="" required autofocus="true" />        
+                Film ID:<input  type="text" class="form-control" placeholder="Enter the film id"  name="filmID" id="filmID" value="<?=$film['fm_ID']?>" required autofocus="true" />        
                 </div>
                 <div class="col">
-                Film length:<input  type="text" class="form-control" placeholder="Enter length of film"  name="filmLength" id="filmLength" value="" required autofocus="true" />          
+                Film length:<input  type="text" class="form-control" placeholder="Enter length of film"  name="filmLength" id="filmLength" value="<?=$film['fm_LENGTH']?>" required autofocus="true" />          
                 </div>
                 </div>
                      </div>
@@ -105,7 +109,7 @@ include 'LibrarianAccountDBConnect.php';
                     </select>
                 </div> 
                 <div class="col">
-                Year:<input  type="text" class="form-control" placeholder="Enter year made"  name="filmYear" id="filmYear" value="" required autofocus="true" />     
+                Year:<input  type="text" class="form-control" placeholder="Enter year made"  name="filmYear" id="filmYear" value="<?=$film['fm_YEAR']?>" required autofocus="true" />     
                 </div>
                 </div></div>
                 <br/>
@@ -179,7 +183,7 @@ include 'LibrarianAccountDBConnect.php';
                 </div></div>
                 <br/>
                 
-                Synopsis:<textarea id="filmSynopsis" class="form-control" placeholder="Enter film synopsis"  name="filmSynopsis"  value="" required autofocus="true"rows="4" cols="50"></textarea>
+                Synopsis:<textarea id="filmSynopsis" class="form-control" placeholder="Enter film synopsis"  name="filmSynopsis"  value="<?=$film['fm_SYNOPSIS']?>" required autofocus="true"rows="4" cols="50"></textarea>
                 <br/>
                 
               

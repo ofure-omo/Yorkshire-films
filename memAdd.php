@@ -8,7 +8,7 @@ include 'LibrarianAccountDBConnect.php';
 <!-----------------------HEAD------------------------>  
 <html>
     <head>
-        <title>Yorkshire films - Your account</title>
+        <title>Yorkshire films - Add a User</title>
         <link rel=stylesheet href="account.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
@@ -69,7 +69,7 @@ include 'LibrarianAccountDBConnect.php';
 <div class="add-form"> 
                
                 
-             <h2>Add a Member</h2>
+             <h2>Add a User</h2>
 
                 
                 

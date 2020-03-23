@@ -1,35 +1,7 @@
 <?php
-include ('autoloader.php');
-?>
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <title> Yorkshire films - Your account </title>      
-        <link rel=stylesheet href="account.css">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-
-    </head>
-
-    <body>
-        <div class="container-sm">
-            <?php
-            session_start();
-
-// Check if the user is logged in, if not then redirect them to the login page
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-//    header("location: login.php");
-//    exit;
-//}
+include 'autoloader.php';
+include 'AccountProgram.php';
+ 
             $admin1 = new Admin('e.drew', 'Eris', 'Drew', 'edrew@t4t.com', '1989-01-01', '07111998633');
             $admin1->setPassword("hello123");
             $film1 = new Film('Journeyman', '92', '15', '2017', 'Available', '10', 'Paddy Considine', 'Drama', 'Sheffield');
@@ -38,16 +10,43 @@ include ('autoloader.php');
             $librarian1 = new Librarian('Jane4512', 'Jane', 'Doe', 'doe@hotmail.com', '1999-01-31', '07888235633');
             $librarian1->setPassword("hello345");
             $onloan1 = new onloan('Gods Own Country', '2020-04-05', '2020-03-05', 'e.fisher');
-            $onloan2 = new onloan('Dark River', '2020-04-06', '2020-03-06', 'm.zuckerberg');
-            ?>
+            $onloan2 = new onloan('Dark River', '2020-04-06', '2020-03-06', 'm.zuckerberg');          
+?>
 
-            <!--navbar (hamburger menu)-->
+<!DOCTYPE html>
+<html>
+
+   <html>
+    <head>
+        <title>Yorkshire films - Your account</title>
+        <link rel=stylesheet href="account.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="dist/jquery.tabledit.js"></script>
+        <script type="text/javascript" src="custom_table_edit.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    </head>
+    
+<!-------------------------------BODY------------------------------------------> 
+    <body>
+        <div class="container-sm">
+            
+           
+<!-----------------------------HAMBURGER NAVBAR------------------------------------------>
             <nav class = "nav main-nav">
                 <div class="toggle">
                     <i class= "fa fa-bars" aria-hidden="true"></i>
                 </div>
 
-                <!--navbar (normal)-->
+<!-------------------------------NAVBAR------------------------------------------>
                 <ul>
                     <li><a href= "home.html">HOME</a></li>
                     <li><a href= "films.html">FILMS</a></li>
@@ -55,7 +54,7 @@ include ('autoloader.php');
                 </ul>
             </nav>
 
-            <!--javascript function that triggers the hamburger menu when min-width is 480px-->
+<!-------------------------------HAMBURGER JS------------------------------------------>
             <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
             <script type="text/javascript">
@@ -66,7 +65,7 @@ include ('autoloader.php');
                 })
             </script>
 
-            <!--Slogan-->
+<!-------------------------------SLOGAN------------------------------------------>
             <div class="flex-container">
                 <div>BROWSE</div>
                 <div>BORROW</div>
@@ -74,58 +73,81 @@ include ('autoloader.php');
                 <div>REPEAT</div>
             </div>
 
-
-            <!------------welcome message ----------->    
-
-            <div class="page-header">
-                <h1><?php echo $admin1->welcome()
-            ?></h1>
-            </div>
+ <!-------------------------------WELCOME MESSAGE------------------------------------------>
+            <h1>Hello, firstname! Welcome to the the Admin Portal</h1>
 
 
+<!-------------------------------YOUR DETAILS------------------------------------------>  
+            <?php
+            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
 
-            <!------------admin details accordion block ----------->  
-            <button class="accordion">View Your Details</button>
+            $member1->setPassword("hello345")
+            ?>
+
+            <button class="accordion">View your details</button>
             <div class="panel">
+
+                <h2>Your details</h2>  
+
                 <table class="table table-striped">
                     <tbody>
                         <tr>
                             <td>First name</td>
-                            <td><?php echo $admin1->getUserfirstname() ?></td>
-                            <td>Edit</td>
+                            <td><?php echo $member1->getUserfirstname() ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Second name</td>
-                            <td><?php echo $admin1->getUsersurname() ?></td>
-                            <td>Edit</td>
+                            <td><?php echo $member1->getUsersurname() ?></td>
+                           <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Email address</td>
-                            <td><?php echo $admin1->getEmail() ?></td>
-                            <td>Edit</td>
+                            <td><?php echo $member1->getEmail() ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Date of birth</td>
-                            <td><?php echo $admin1->getDob() ?></td>
-                            <td>Edit</td>
+                            <td><?php echo $member1->getDob() ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Telephone number</td>
-                            <td><?php echo $admin1->getTel() ?></td>
-                            <td>Edit</td>
+                            <td><?php echo $member1->getTel() ?></td>
+                           <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Username</td>
-                            <td><?php echo $admin1->getUsername() ?></td>
-                            <td>Edit</td>
+                            <td><?php echo $member1->getUsername() ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><?php echo $admin1->getPassword() ?></td>
-                            <td>Edit</td>
-
+                            <td><?php echo $member1->getPassword() ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>  
@@ -133,147 +155,94 @@ include ('autoloader.php');
 
 
 
-
-            <!------------member list accordion block ----------->  
+  <!-------------------------------MEMBER LIST------------------------------------------>
 
             <button class="accordion">View / Edit Members List</button>
             <div class="panel">     
 
-                <h2>Members List</h2>          
-                <table class="table table-striped">
+                <h2>Members List</h2> 
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/memAdd.php"><i class="fa fa-plus"></i>   Add a member</a></button>
+                <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Username</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">Date of birth</th>
                             <th scope="col">Telephone number</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>      
 
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $member1->getUserfirstname() ?></td>
-                        <td><?php echo $member1->getUsersurname() ?></td>
-                        <td><?php echo $member1->getUsername() ?></td>
-                        <td><?php echo $member1->getEmail() ?></td>
-                        <td><?php echo $member1->getDob() ?></td>
-                        <td><?php echo $member1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $member1->getUserfirstname() ?></td>
-                        <td><?php echo $member1->getUsersurname() ?></td>
-                        <td><?php echo $member1->getUsername() ?></td>
-                        <td><?php echo $member1->getEmail() ?></td>
-                        <td><?php echo $member1->getDob() ?></td>
-                        <td><?php echo $member1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $member1->getUserfirstname() ?></td>
-                        <td><?php echo $member1->getUsersurname() ?></td>
-                        <td><?php echo $member1->getUsername() ?></td>
-                        <td><?php echo $member1->getEmail() ?></td>
-                        <td><?php echo $member1->getDob() ?></td>
-                        <td><?php echo $member1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $member1->getUserfirstname() ?></td>
-                        <td><?php echo $member1->getUsersurname() ?></td>
-                        <td><?php echo $member1->getUsername() ?></td>
-                        <td><?php echo $member1->getEmail() ?></td>
-                        <td><?php echo $member1->getDob() ?></td>
-                        <td><?php echo $member1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
+<?php foreach ($memtable as $member): ?>
+                        <tr>
+                            <td><?= $member['user_ID'] ?></td>
+                            <td><?= $member['user_UN'] ?></td>
+                            <td><?= $member['user_FN'] ?></td>
+                            <td><?= $member['user_SN'] ?></td>
+                            <td><?= $member['user_EMAIL'] ?></td>
+                            <td><?= $member['user_DOB'] ?></td>
+                            <td><?= $member['user_TEL'] ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=<?= $member['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=<?= $member['user_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
+                        </tr>
+<?php endforeach; ?>
                     </tbody>
                 </table>
+
             </div>
 
 
 
-            <!--- librarian list-->
-            <button class="accordion">View / Edit Librarians List</button>
+
+  <!-------------------------------LIBRARIAN LIST------------------------------------------>
+           <button class="accordion">View / Edit Librarians List</button>
             <div class="panel">     
 
-                <h2>Librarians List</h2>          
-                <table class="table table-striped">
+                <h2>Librarians List</h2> 
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/memAdd.php"><i class="fa fa-plus"></i>   Add a member</a></button>
+                <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Username</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">Date of birth</th>
                             <th scope="col">Telephone number</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>      
 
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $librarian1->getUserfirstname() ?></td>
-                        <td><?php echo $librarian1->getUsersurname() ?></td>
-                        <td><?php echo $librarian1->getUsername() ?></td>
-                        <td><?php echo $librarian1->getEmail() ?></td>
-                        <td><?php echo $librarian1->getDob() ?></td>
-                        <td><?php echo $librarian1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $librarian1->getUserfirstname() ?></td>
-                        <td><?php echo $librarian1->getUsersurname() ?></td>
-                        <td><?php echo $librarian1->getUsername() ?></td>
-                        <td><?php echo $librarian1->getEmail() ?></td>
-                        <td><?php echo $librarian1->getDob() ?></td>
-                        <td><?php echo $librarian1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $librarian1->getUserfirstname() ?></td>
-                        <td><?php echo $librarian1->getUsersurname() ?></td>
-                        <td><?php echo $librarian1->getUsername() ?></td>
-                        <td><?php echo $librarian1->getEmail() ?></td>
-                        <td><?php echo $librarian1->getDob() ?></td>
-                        <td><?php echo $librarian1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $librarian1->getUserfirstname() ?></td>
-                        <td><?php echo $librarian1->getUsersurname() ?></td>
-                        <td><?php echo $librarian1->getUsername() ?></td>
-                        <td><?php echo $librarian1->getEmail() ?></td>
-                        <td><?php echo $librarian1->getDob() ?></td>
-                        <td><?php echo $librarian1->getTel() ?></td>
-                        <td>Edit</td>
-                    </tr>
+<?php foreach ($libtable as $librarian): ?>
+                        <tr>
+                            <td><?= $librarian['user_ID'] ?></td>
+                            <td><?= $librarian['user_UN'] ?></td>
+                            <td><?= $librarian['user_FN'] ?></td>
+                            <td><?= $librarian['user_SN'] ?></td>
+                            <td><?= $librarian['user_EMAIL'] ?></td>
+                            <td><?= $librarian['user_DOB'] ?></td>
+                            <td><?= $librarian['user_TEL'] ?></td>
+                            <td class="actions">
+                                <a href="memUpdate.php?user_ID=<?= $librarian['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=<?= $member['user_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
+                        </tr>
+<?php endforeach; ?>
                     </tbody>
                 </table>
+
             </div>
 
 
-            <!-- Onloan list --->
+  <!-------------------------------ONLOAN LIST------------------------------------------>
             <button class="accordion">View / Edit Active loan Catalogue</button>
             <div class="panel">     
 
@@ -332,18 +301,19 @@ include ('autoloader.php');
                             class="btn btn-primary">Add film</button>
                 </form>   
 
-
-
-
-
             </div>
-            <!------------film catalogue accordion block ----------->  
+             <!-------------------------------FILM CATALOG------------------------------------------>
 
-            <button class="accordion">View / Edit Film Catalogue</button>
+
+
+            <button class="accordion">View / Edit Film Catalog</button>
             <div class="panel">     
 
-                <h2>Film Catalogue</h2>          
-                <table class="table table-striped">
+                <h2>Film Catalog</h2>
+
+                <button class="btn btn-primary" id="add-btn-btn" ><a id="add-button" href="/Yorkshire-Films/filmAdd.php"><i class="fa fa-plus"></i>   Add a film</a></button>
+
+                <table class="table table-striped" id="film-table">
                     <tbody>    
                     <thead>
                         <tr>
@@ -356,90 +326,33 @@ include ('autoloader.php');
                             <th scope="col">Genre</th>
                             <th scope="col">Town</th>
                             <th scope="col">Availability</th>
-                            <th scope="col">Loan Count</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">Loans</th>
+                            <th scope="col"></th>
                         </tr>
-                    </thead>      
+                    </thead>   
 
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $film1->getFilmtitle() ?></td>
-                        <td><?php echo $film1->getFilmlength() ?></td>
-                        <td><?php echo $film1->getFilmrating() ?></td>
-                        <td><?php echo $film1->getFilmyear() ?></td>
-                        <td><?php echo $film1->getFilmdirector() ?></td>
-                        <td><?php echo $film1->getFilmgenre() ?></td>
-                        <td><?php echo $film1->getFilmtown() ?></td>
-                        <td><?php echo $film1->getFilmavailability() ?></td>
-                        <td><?php echo $film1->getFilmloancount() ?></td>
-                        <td>Edit</td>
-                    </tr>
 
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $film1->getFilmtitle() ?></td>
-                        <td><?php echo $film1->getFilmlength() ?></td>
-                        <td><?php echo $film1->getFilmrating() ?></td>
-                        <td><?php echo $film1->getFilmyear() ?></td>
-                        <td><?php echo $film1->getFilmdirector() ?></td>
-                        <td><?php echo $film1->getFilmgenre() ?></td>
-                        <td><?php echo $film1->getFilmtown() ?></td>
-                        <td><?php echo $film1->getFilmavailability() ?></td>
-                        <td><?php echo $film1->getFilmloancount() ?></td>
-                        <td>Edit</td>
-                    </tr>
+<?php foreach ($fmtable as $film): ?>
+                        <tr>
+                            <td><?= $film['fm_ID'] ?></td>
+                            <td><?= $film['fm_TITLE'] ?></td>
+                            <td><?= $film['fm_LENGTH'] ?></td>
+                            <td><?= $film['fm_RATING'] ?></td>
+                            <td><?= $film['fm_YEAR'] ?></td>
+                            <td><?= $film['dir_NAME'] ?></td>
+                            <td><?= $film['genre'] ?></td>
+                            <td><?= $film['twn_NAME'] ?></td>
+                            <td><?= $film['fm_AVAILABILITY'] ?></td>
+                            <td><?= $film['FM_LOANCOUNT'] ?></td>
 
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $film1->getFilmtitle() ?></td>
-                        <td><?php echo $film1->getFilmlength() ?></td>
-                        <td><?php echo $film1->getFilmrating() ?></td>
-                        <td><?php echo $film1->getFilmyear() ?></td>
-                        <td><?php echo $film1->getFilmdirector() ?></td>
-                        <td><?php echo $film1->getFilmgenre() ?></td>
-                        <td><?php echo $film1->getFilmtown() ?></td>
-                        <td><?php echo $film1->getFilmavailability() ?></td>
-                        <td><?php echo $film1->getFilmloancount() ?></td>
-                        <td>Edit</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $film1->getFilmtitle() ?></td>
-                        <td><?php echo $film1->getFilmlength() ?></td>
-                        <td><?php echo $film1->getFilmrating() ?></td>
-                        <td><?php echo $film1->getFilmyear() ?></td>
-                        <td><?php echo $film1->getFilmdirector() ?></td>
-                        <td><?php echo $film1->getFilmgenre() ?></td>
-                        <td><?php echo $film1->getFilmtown() ?></td>
-                        <td><?php echo $film1->getFilmavailability() ?></td>
-                        <td><?php echo $film1->getFilmloancount() ?></td>
-                        <td>Edit</td>
-                    </tr>
+                            <td class="actions">
+                                <a href="filmUpdate.php?fm_ID=<?= $film['fm_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?fm_ID=<?= $film['fm_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
+                        </tr>
+<?php endforeach; ?>
                     </tbody>
-                </table>
-                <h2>Add a film</h2>
-                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                    ID: <input  type="text" class="form-control" placeholder=""  name="filmID" id="filmID" value="" required autofocus="true" />          
-                    Film name:<input  type="text" class="form-control" placeholder="Enter the film name"  name="filmName" id="filmName" value="" required autofocus="true" />          
-                    Film length:<input  type="text" class="form-control" placeholder="Enter length of film"  name="filmLength" id="filmLength" value="" required autofocus="true" />          
-                    Film rating:<input  type="text" class="form-control" placeholder="Enter film rating"  name="filmRating" id="filmRating" value="" required autofocus="true" />          
-                    Year:<input  type="text" class="form-control" placeholder="Enter year made"  name="filmYear" id="filmYear" value="" required autofocus="true" />  
-                    Director:<input  type="text" class="form-control" placeholder="Enter film director"  name="filmDirector" id="filmDirector" value="" required autofocus="true" />  
-                    Genre:<input  type="text" class="form-control" placeholder="Enter film genre"  name="filmGenre" id="filmGenre" value="" required autofocus="true" />  
-                    Town:<input  type="text" class="form-control" placeholder="Enter town"  name="filmTown" id="filmTown" value="" required autofocus="true" />  
-                    Availability:<input  type="text" class="form-control" placeholder="Enter film availability"  name="filmAvailability" id="filmAvailability" value="" required autofocus="true" />  
-                    Loan Count:<input  type="text" class="form-control" placeholder="Enter film loan count"  name="filmLoanCount" id="filmLoanCount" value="" required autofocus="true" />  
-                    <!--         <button type="button" id="updateButton"
-                            class="btn btn-primary"
-                            onclick="addFilm();">
-                      Add
-                    </button>-->
-
-                    <button type="button" id="updateButton"
-                            class="btn btn-primary">Add film</button>
-                </form>   
-
+                </table>  
 
 
 
@@ -449,53 +362,38 @@ include ('autoloader.php');
 
 
 
+            </div>
 
 
 
-        </div>
 
-                        <script>
-<!-- JS addfilm functionality-->
-        
-        $(document).ready(function()
-                {
-                        $("#updateButton").click(function(){
-                var filmID = $("#filmID").val();
-                        var filmName = $("#filmName").val();
-                        var filmLength = $("#filmLength").val();
-                        var filmRating = $("#filmRating").val();
-                        var filmYear = $("#filmYear").val();
-                        var filmDirector = $("#filmDirector").val();
-                        var filmGenre = $("#filmGenre").val();
-                        var filmTown = $("#filmTown").val();
-                        var filmAvailability = $("#filmAvailability").val();
-                        var filmLoanCount = $("#filmLoanCount").val();
-                        var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + filmID + "</td><td>" + filmName + "</td></tr>";
-//            var markup = "<tr><td>" + filmID + "</td><td>" + filmName + "</td><td>" + filmLength + "</td><td>" + filmRating + "</td>\n\
-//<td>" + filmYear + "</td><td>" + filmDirector + "</td><td>" + filmGenre + "</td><td>" + filmTown + "</td><td>" + filmAvailability + "</td><td>" + filmLoanCount + "</td><td>" + <p>Edit</p> + "</td></tr>";
-            $("table tbody").append(markup);
-            });
-        </script>  
+           <!-------------------------------ACCORDION BLOCK JS------------------------------------------>
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                }
+
+<!-------------------------------FORM CLEAR JS------------------------------------------>
+
+                function clearField() {
+                    if (document.getElementById) {
+                        document.filmForm.message.value = "";
+                    }
+                }
+            </script>
 
 
-
-        <script>
-
-<!------------JS for accordion block ----------->
-                    var acc = document.getElementsByClassName("accordion");
-                    var i;
-                    for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === "block") {
-            panel.style.display = "none";
-            } else {
-            panel.style.display = "block";
-            }
-            });
-            }
-        </script>
     </body>
 
 

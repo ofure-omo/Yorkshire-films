@@ -20,6 +20,7 @@
     
     $memtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Member')");
     
+    $libtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Librarian')");
     
    /***************ADD MEMBER FORM**********/ 
     
