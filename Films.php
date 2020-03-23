@@ -145,7 +145,7 @@
     document.getElementById("films").innerHTML = this.responseText;
     }
   };
-  window.open("fm.php?id="+str, true);
+  window.location.replace("fm.php?id="+str, true);
   
 }
     </script>

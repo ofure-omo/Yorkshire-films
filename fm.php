@@ -23,6 +23,7 @@ include 'AutoLoader.php';
                 $length = $row['fm_LENGTH'];
                 $town = $row['twn_NAME'];
                 $syn = $row['fm_SYNOPSIS'];
+                $availability = $row['fm_AVAILABILITY'];
                 $img1 = $row['image_1'];
                 $img2 = $row['image_2'];
                 $img3 = $row['image_3'];
@@ -124,18 +125,20 @@ include 'AutoLoader.php';
                         <center><img src="<?php echo $row['image_6'];?>" style='height:500px' ></center>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev" style='margin-left:250px'>
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next" style='margin-right:250px'>
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
             <br>
             
-            <div id="loan">
+<?php if ($availability == 'Available') {
+    ?>
+    <div id="loan">
                 <a onclick="loanFilm(<?php echo $id; ?>)">
                     <div style="text-align: center">
                         <button>Loan Film</button>
@@ -143,6 +146,14 @@ include 'AutoLoader.php';
                     <br>
                 </a>
             </div>
+    <?php 
+}   else {
+    ?>
+            <h4 style='text-align: center; background-color: grey'>Film is currently on loan.</h4>
+    <?php
+}
+?>
+            
             
             <p style="text-align:center;">  
                 <b>Year Released:</b> <?php echo $year;?>
