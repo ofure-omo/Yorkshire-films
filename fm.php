@@ -1,38 +1,44 @@
-<?php 
+<?php
 include 'AutoLoader.php';
+include_once 'connection.php';
 
+$id = intval($_GET['id']);
+$sql = "SELECT * FROM Films"
+        . " INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID"
+        . " INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID"
+        . " INNER JOIN Towns on Films.fm_TOWN = Towns.twn_ID"
+        . " INNER JOIN Images on Films.fm_ID = Images.img_ID"
+        . " WHERE fm_ID = '" . $id . "';";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$year = $row['fm_YEAR'];
+$title = $row['fm_TITLE'];
+$dir = $row['dir_NAME'];
+$age = $row['fm_RATING'];
+$genre = $row['genre'];
+$length = $row['fm_LENGTH'];
+$town = $row['twn_NAME'];
+$syn = $row['fm_SYNOPSIS'];
+$availability = $row['fm_AVAILABILITY'];
+$img1 = $row['image_1'];
+$img2 = $row['image_2'];
+$img3 = $row['image_3'];
+$img4 = $row['image_4'];
+$img5 = $row['image_5'];
+$img6 = $row['image_6'];
 
-    include_once 'connection.php';
-    $id = intval($_GET['id']);
-            //if(mysqli_num_rows ($result) > 0){
-            //while ($row = mysqli_fetch_array($result))} Necessary for testing if it returns anything
-                $sql = 
-                    "SELECT * FROM Films"
-                    . " INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID"
-                    . " INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID"
-                    . " INNER JOIN Towns on Films.fm_TOWN = Towns.twn_ID"
-                    . " INNER JOIN Images on Films.fm_ID = Images.img_ID"
-                    . " WHERE fm_ID = '".$id."';";
-                $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_assoc($result);
-                $year = $row['fm_YEAR'];
-                $title = $row['fm_TITLE'];
-                $dir = $row['dir_NAME'];
-                $age = $row['fm_RATING'];
-                $genre = $row['genre'];
-                $length = $row['fm_LENGTH'];
-                $town = $row['twn_NAME'];
-                $syn = $row['fm_SYNOPSIS'];
-                $availability = $row['fm_AVAILABILITY'];
-                $img1 = $row['image_1'];
-                $img2 = $row['image_2'];
-                $img3 = $row['image_3'];
-                $img4 = $row['image_4'];
-                $img5 = $row['image_5'];
-                $img6 = $row['image_6'];
-                
-               
-                
+$sql2 = "SELECT due_DATE FROM Onloan "
+        . " INNER JOIN Films on Films.fm_ID = Onloan.fm_ID"
+        . " WHERE Films.fm_ID = '" . $id . "';";
+
+$result2 = mysqli_query($conn, $sql2);
+$row2 = mysqli_fetch_assoc($result);
+$duedate = $row2['due_DATE'];
+
+if (strtotime($duedate) < date("Y-m-d")) {
+    $updateavailability = "UPDATE Films SET fm_AVAILABILITY = 'Available' WHERE fm_ID = '".$id."';";
+    $updateavailabilityresult = mysqli_query($conn, $updateavailability);
+}
 ?>
 
 
@@ -48,26 +54,70 @@ include 'AutoLoader.php';
     </style>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+                
+        <link rel=stylesheet href="account.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="dist/jquery.tabledit.js"></script>
+        <script type="text/javascript" src="custom_table_edit.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
         <title><?php echo $title ?></title>
         <script>
-    function loanFilm(id) {
-   {
-    var xhttp;
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("loan").innerHTML = this.responseText;
-    }
-  };
-  window.open("loan.php?id="+ id, true);
-}
-}
-    </script>
+            function loanFilm(id) {
+                {
+                    var xhttp;
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("loan").innerHTML = this.responseText;
+                        }
+                    };
+                    window.open("loan.php?id=" + id, true);
+                }
+            }
+        </script>
     </head>
+    
+           <section>
+
+        <body>
+   
+    <!--navbar (hamburger menu)-->
+      <nav class = "nav main-nav">
+     <div class="toggle">
+        <i class= "fa fa-bars" aria-hidden="true"></i>
+      </div>
+
+      <!--navbar (normal)-->
+        <ul>
+          <li><a href= "home.php">HOME</a></li>
+          <li><a href= "Films.php">FILMS</a></li>
+          <li><a href= "login.php">LOG IN</a></li>
+           <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
+        </ul>
+      </nav>
+
+    <!--Slogan-->
+            <div class="flex-container">
+                <div>BROWSE</div>
+                <div>BORROW</div>
+                <div>ENJOY</div>
+                <div>REPEAT</div>
+            </div>
+    <div class="headerLogo">
+        <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
+    </div>
+
+ <!--   
     <div class="headerLogo">
         <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
     </div>
@@ -99,30 +149,31 @@ include 'AutoLoader.php';
     <section>
 
         <body>
+ -->
             <div class="sticky">
-                <h1 style="font: 25px Georgia, serif; line-height: 1.8;background-color:grey; text-transform: uppercase"><center> <?php echo $title ?></center></h1>
+                <h2 style="font-size: 40px; font-family: 'Sen', sans-serif; line-height: 1.5;background-color:grey; text-transform: uppercase"><center> <?php echo $title ?></center></h2>
             </div>
 
 
             <div id="carousel2" class="carousel slide" data-ride="carousel" >
                 <div class="carousel-inner" role="listbox" style="width:100%; height:500px !important;">
                     <div class="carousel-item active">
-                        <center><img src="<?php echo $row['image_1'];?>" style='height:500px' ></center>
+                        <center><img src="<?php echo $row['image_1']; ?>" style='height:500px' ></center>
                     </div>
                     <div class="carousel-item">
-                        <center><img src="<?php echo $row['image_2'];?>" style='height:500px' ></center>
+                        <center><img src="<?php echo $row['image_2']; ?>" style='height:500px' ></center>
                     </div>
                     <div class="carousel-item">
-                        <center><img src="<?php echo $row['image_3'];?>" style='height:500px' ></center>
+                        <center><img src="<?php echo $row['image_3']; ?>" style='height:500px' ></center>
                     </div>
                     <div class="carousel-item">
-                        <center><img src="<?php echo $row['image_4'];?>" style='height:500px' ></center>
+                        <center><img src="<?php echo $row['image_4']; ?>" style='height:500px' ></center>
                     </div>
                     <div class="carousel-item">
-                        <center><img src="<?php echo $row['image_5'];?>" style='height:500px' ></center>
+                        <center><img src="<?php echo $row['image_5']; ?>" style='height:500px' ></center>
                     </div>
                     <div class="carousel-item">
-                        <center><img src="<?php echo $row['image_6'];?>" style='height:500px' ></center>
+                        <center><img src="<?php echo $row['image_6']; ?>" style='height:500px' ></center>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev" style='margin-left:250px'>
@@ -135,50 +186,53 @@ include 'AutoLoader.php';
                 </a>
             </div>
             <br>
-            
-<?php if ($availability == 'Available') {
+
+<?php 
+
+if ($availability == 'Available') {
     ?>
-    <div id="loan">
-                <a onclick="loanFilm(<?php echo $id; ?>)">
-                    <div style="text-align: center">
-                        <button>Loan Film</button>
-                    </div>
-                    <br>
-                </a>
-            </div>
-    <?php 
-}   else {
-    ?>
-            <h4 style='text-align: center; background-color: grey'>Film is currently on loan.</h4>
+                <div id="loan">
+                    <a onclick="loanFilm(<?php echo $id; ?>)">
+                        <div style="text-align: center">
+                            <button>Loan Film</button>
+                        </div>
+                        <br>
+                    </a>
+                </div>
     <?php
-}
-?>
-            
-            
-            <p style="text-align:center;">  
-                <b>Year Released:</b> <?php echo $year;?>
+} else {
+    ?>
+                <h4 style='text-align: center; background-color: grey'>Film is currently on loan.</h4>
+                <?php
+            }
+
+            ?>
+
+
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Year Released:</b> <?php echo $year; ?>
             </p>
-            <p style="text-align:center;">  
-                <b>Title:</b> <?php echo $title;?>
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Title:</b> <?php echo $title; ?>
             </p>
-            <p style="text-align:center;">  
-                <b>Director:</b> <?php echo $dir;?>
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Director:</b> <?php echo $dir; ?>
             </p>    
-            <p style="text-align:center;">  
-                <b>Age Rating:</b> <?php echo $age;?>
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Age Rating:</b> <?php echo $age; ?>
             </p>
-            <p style="text-align:center;">  
-                <b>Genre:</b> <?php echo $genre;?>
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Genre:</b> <?php echo $genre; ?>
             </p>
-            <p style="text-align:center;">  
-                <b>Length:</b> <?php echo $length . "min";?>
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Length:</b> <?php echo $length . "min"; ?>
             </p>
-            <p style="text-align:center;">  
-                <b>Location:</b> <?php echo $town;?>
+            <p style="text-align:center;font-family: 'Sen', sans-serif;">  
+                <b>Location:</b> <?php echo $town; ?>
             </p>
             <br>
-            <p style="width:700px; text-align:justify; margin-left:10cm">
-                <b>Synopsis: </b> <?php echo $syn;?>
+            <p style="width:700px; text-align:justify; margin-left:10cm;font-family: 'Sen', sans-serif;">
+                <b>Synopsis: </b> <?php echo $syn; ?>
             </p>
         </body>
     </section>
