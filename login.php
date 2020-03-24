@@ -1,3 +1,7 @@
+<?php
+include 'loginProgram.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -65,19 +69,20 @@
              <p class="message">Welcome back to Yorkshire Films <br> Sign in to view the latest Yorkshire films! <br> </p>
          </div> 
          
+              <div><?php echo $loginMsg; ?></div>
         
-             <form action= "login.php" method="post" id=form1> 
+             <form action= "" method="post" id=form1> 
 
          
                  <input type="text" id="email" class="shadow p-3 mb-5 bg-white rounded form" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z]+.com" autofocus required>
                  <span class="error"></span>
                  <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password"  required> 
                  <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
-                 <button type="submit" id="submit" value="submit" form="form1" class="form">SUBMIT</button>    
+                 <button type="submit" name="login" id="submit" value="submit" form="form1" class="form">SUBMIT</button>    
              </form>
          
               <div class="create-acc">
-                  <button type="submit" value="register" class="register" id="create"> <a href="UserReg.php" class="registeracc">CREATE ACCOUNT</a></button>
+                  <button type="submit" value="register" class="register" id="create"> <a href="/Yorkshire-Films/UserReg.php" class="registeracc">CREATE ACCOUNT</a></button>
               </div>
 
 
