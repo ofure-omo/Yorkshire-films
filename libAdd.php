@@ -8,8 +8,9 @@ include 'AccountProgram.php';
 <!-----------------------HEAD------------------------>  
 <html>
     <head>
-        <title>Yorkshire films - Add a Member</title>
+        <title>Yorkshire films - Add a Librarian</title>
         <link rel=stylesheet href="account.css">
+        <link rel=stylesheet href="home.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -125,6 +126,22 @@ include 'AccountProgram.php';
                 </form> 
                 </div>
 
+
+            
+  <!-------------------------------FOOTER------------------------------------------>
+            <footer>
+              <div class="info-container">
+                <p class="info"><a href="">HELP</a></p>
+                <p class="info"><a href="">PRIVACY POLICY</a></p>
+                <p class= "info"><a href="Jobs.php">JOBS</a></p>
+              </div>
+
+              <div class="social-container">
+                <span class="icon" src="" href="" ></span>
+                <span class="icon" src="" href="" ></span>
+                <span class="icon" src="" href="" ></span>
+              </div>
+            </footer>
  </div>
             
             
