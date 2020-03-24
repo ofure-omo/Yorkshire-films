@@ -69,15 +69,15 @@ include 'AccountProgram.php';
 <div class="add-form"> 
                
                 
-             <h2>Add a Member</h2>
+             <h2>Add a Librarian</h2>
 
                 
                 
-                <div><?php echo $memMsg; ?></div>
+                <div><?php echo $libMsg; ?></div>
 
                 
                 
-                <form name="memForm" class="memForm" id="memForm" action = "" method = "POST">
+                <form name="libForm" class="libForm" id="libForm" action = "" method = "POST">
 
                     
                 <div class="form-group">
@@ -120,7 +120,7 @@ include 'AccountProgram.php';
 
                 
               
-           <input type="submit" value=" Add Member" name="memSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
+           <input type="submit" value=" Add Librarian" name="libSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
 
                 </form> 
                 </div>
@@ -128,3 +128,4 @@ include 'AccountProgram.php';
  </div>
             
             
+

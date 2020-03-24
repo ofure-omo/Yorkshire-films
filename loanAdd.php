@@ -1,3 +1,4 @@
+
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
@@ -8,7 +9,7 @@ include 'AccountProgram.php';
 <!-----------------------HEAD------------------------>  
 <html>
     <head>
-        <title>Yorkshire films - Add a Member</title>
+        <title>Yorkshire films - Your account</title>
         <link rel=stylesheet href="account.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
@@ -61,70 +62,42 @@ include 'AccountProgram.php';
                 <div>REPEAT</div>
             </div>
 
-
-
-<!-----------------------Add member form------------------------>  
+<!-----------------------Add film form------------------------>  
 
 
 <div class="add-form"> 
                
                 
-             <h2>Add a Member</h2>
+             <h2>Add a loan item</h2>
 
                 
                 
-                <div><?php echo $memMsg; ?></div>
+                <div><?php echo $loanMsg; ?></div>
 
                 
                 
-                <form name="memForm" class="memForm" id="memForm" action = "" method = "POST">
+                <form name="filmForm" class="filmForm" id="filmForm" action = "" method = "POST">
 
-                    
+                Film name:<input  type="text" class="form-control" placeholder="Enter the film name"  name="filmName" id="filmName" value="" required autofocus="true" />             
+                <br/>     
                 <div class="form-group">
                 <div class="row">
                 <div class="col">
-                First Name:<input  type="text" class="form-control" placeholder="First Name"  name="firstName" id="firstName" value="" required autofocus="true" />              
-                </div> 
+                Due Date:<input type="date" class="form-control" placeholder=""  name="dueDate" id="dueDate" value="" required autofocus="true" />        
+
+                </div>
                 <div class="col">
-                Last Name:<input  type="text" class="form-control" placeholder="Last Name"  name="lastName" id="lastName" value="" required autofocus="true" />        
-              </div>
-                </div></div>
-                <br/>
+                Loan Date:<input type="date" class="form-control" placeholder=""  name="loanDate" id="loanDate" value="" required autofocus="true" />          
+                </div>
+                </div>
+                     </div>
                 
                 
-                
-                <div class="form-group">
-                <div class="row">
-                <div class="col">
-                User Name:<input  type="text" class="form-control" placeholder="Username"  name="userName" id="userName" value="" required autofocus="true" />          
-                   </div> 
-                <div class="col">
-                Email:<input  type="text" class="form-control" placeholder="Email"  name="email" id="email" value="" required autofocus="true" />        
-              </div>
-                </div></div>
-                <br/>
-                
-                
-               <div class="form-group">
-                <div class="row">
-                <div class="col">
-                Date of Birth:<input  type="text" class="form-control" placeholder="Date of Birth"  name="dob" id="dob" value="" required autofocus="true" />          
-                   </div> 
-                <div class="col">
-                Telephone No.:<input  type="text" class="form-control" placeholder="Telephone No."  name="telNo" id="telNo" value="" required autofocus="true" />        
-              </div>
-                </div></div>
+                Member's username:<input  type="text" class="form-control" placeholder="Enter username"  name="userName" id="userName" value="" required autofocus="true" />             
                 <br/> 
-               
-                
-
-                
               
-           <input type="submit" value=" Add Member" name="memSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
+              
+           <input type="submit" value=" Add Loan Item " name="loanSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
 
                 </form> 
                 </div>
-
- </div>
-            
-            

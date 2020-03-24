@@ -61,7 +61,39 @@
         return $memMsg;
     }
     
+    /***************ADD LIBRARIAN FORM**********/ 
     
+ $libMsg='';
+ 
+         global $libMsg;
+    if (isset($_POST["libSubmit"])) {
+          $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
+        $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_SPECIAL_CHARS);
+        $userName = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+        $dob = filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_SPECIAL_CHARS);
+        $telNo = filter_input(INPUT_POST, 'telNo', FILTER_SANITIZE_SPECIAL_CHARS);
+        $userType = 'Librarian';
+        
+
+        $new_lib = $pdo->prepare("INSERT INTO Users ( user_UN,  user_FN, user_SN, user_EMAIL, user_DOB, user_TEL, user_TYPE)
+              VALUES (  :username, :userfn, :userln, :email, :dob, :tel, :type)");
+
+        $new_lib->execute([
+             'username' => $userName,
+            'userfn' =>  $firstName,
+            'userln' => $lastName,
+            'email' => $email,
+            'dob' =>  $dob,
+            'tel' => $telNo,
+            'type' => $userType,
+                ]);
+
+        $libMsg = '<div class="alert alert-success alert-dismissible fade show">
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php" >View Results</a></strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $libMsg;
+    } 
     
   /*************** ADD FILM FORM**********/ 
     
@@ -123,7 +155,37 @@
     }
         
         
+/***************ADD LOAN FORM**********/ 
+      $loanMsg='';
+ global $loanMsg;
+ 
+         global $loanMsg;
+    if (isset($_POST["loanSubmit"])) {
+          $filmName = filter_input(INPUT_POST, 'filmName', FILTER_SANITIZE_SPECIAL_CHARS);
+        $dueDate = filter_input(INPUT_POST, 'dueDate', FILTER_SANITIZE_SPECIAL_CHARS);
+        $loanDate = filter_input(INPUT_POST, 'loanDate', FILTER_SANITIZE_SPECIAL_CHARS);
+        $username = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_SPECIAL_CHARS);
         
+        
+
+        $new_loan = $pdo->prepare("INSERT INTO Onloan ( fm_TITLE, loan_DATE, due_DATE, user_UN)
+              VALUES (  :fmtitle, :loandate, :duedate, :username)");
+
+        $new_loan->execute([
+             'fmtitle' => $filmName,
+            'loandate' =>  $dueDate,
+            'duedate' => $loanDate,
+            'username' => $username,
+            
+                ]);
+
+        $loanMsg = '<div class="alert alert-success alert-dismissible fade show">
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php" >View Results</a></strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $loanMsg;
+    } 
+    
+            
         
  /*************** UPDATE MEMBER FORM**********/ 
  global $memUpdateMsg;

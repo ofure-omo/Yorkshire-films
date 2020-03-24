@@ -205,7 +205,7 @@ include 'AccountProgram.php';
             <div class="panel">     
 
                 <h2>Librarians List</h2> 
-                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/memAdd.php"><i class="fa fa-plus"></i>   Add a member</a></button>
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/libAdd.php"><i class="fa fa-plus"></i>   Add a librarian</a></button>
                 <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
@@ -247,7 +247,7 @@ include 'AccountProgram.php';
             <div class="panel">     
 
                 <h2>Loan List</h2> 
-                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/#"><i class="fa fa-plus"></i>   Add a loan</a></button>
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/loanAdd.php"><i class="fa fa-plus"></i>   Add a loan</a></button>
                 <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
