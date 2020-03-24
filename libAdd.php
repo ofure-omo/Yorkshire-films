@@ -8,9 +8,9 @@ include 'AccountProgram.php';
 <!-----------------------HEAD------------------------>  
 <html>
     <head>
-        <title>Yorkshire films - Add a Member</title>
+        <title>Yorkshire films - Add a Librarian</title>
         <link rel=stylesheet href="account.css">
-              <link rel=stylesheet href="home.css">
+        <link rel=stylesheet href="home.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -37,9 +37,9 @@ include 'AccountProgram.php';
 
 <!---------------navbar (normal)-->
                 <ul>
-                    <li><a href= "home.php">HOME</a></li>
-                    <li><a href= "films.php">FILMS</a></li>
-                    <li><a href= "login.php">LOG IN</a></li>
+                    <li><a href= "home.html">HOME</a></li>
+                    <li><a href= "films.html">FILMS</a></li>
+                    <li><a href= "login.html">LOG IN</a></li>
                 </ul>
             </nav>
 
@@ -70,15 +70,15 @@ include 'AccountProgram.php';
 <div class="add-form"> 
                
                 
-             <h2>Add a Member</h2>
+             <h2>Add a Librarian</h2>
 
                 
                 
-                <div><?php echo $memMsg; ?></div>
+                <div><?php echo $libMsg; ?></div>
 
                 
                 
-                <form name="memForm" class="memForm" id="memForm" action = "" method = "POST">
+                <form name="libForm" class="libForm" id="libForm" action = "" method = "POST">
 
                     
                 <div class="form-group">
@@ -121,11 +121,13 @@ include 'AccountProgram.php';
 
                 
               
-           <input type="submit" value=" Add Member" name="memSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
+           <input type="submit" value=" Add Librarian" name="libSubmit" id="submit-button" class="btn btn-primary" onclick="clearField()" />
 
                 </form> 
-                
                 </div>
+
+
+            
   <!-------------------------------FOOTER------------------------------------------>
             <footer>
               <div class="info-container">
@@ -143,3 +145,4 @@ include 'AccountProgram.php';
  </div>
             
             
+

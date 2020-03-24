@@ -20,6 +20,7 @@ include 'AccountProgram.php';
     <head>
         <title>Yorkshire films - Your account</title>
         <link rel=stylesheet href="account.css">
+            <link rel=stylesheet href="home.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -74,7 +75,7 @@ include 'AccountProgram.php';
             </div>
 
  <!-------------------------------WELCOME MESSAGE------------------------------------------>
-            <h1>Hello, firstname! Welcome to the the Admin Portal</h1>
+            <h1>Hello! Welcome to the the Admin Portal</h1>
 
 
 <!-------------------------------YOUR DETAILS------------------------------------------>  
@@ -205,7 +206,7 @@ include 'AccountProgram.php';
             <div class="panel">     
 
                 <h2>Librarians List</h2> 
-                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/memAdd.php"><i class="fa fa-plus"></i>   Add a member</a></button>
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/libAdd.php"><i class="fa fa-plus"></i>   Add a librarian</a></button>
                 <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
@@ -247,7 +248,7 @@ include 'AccountProgram.php';
             <div class="panel">     
 
                 <h2>Loan List</h2> 
-                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/#"><i class="fa fa-plus"></i>   Add a loan</a></button>
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/Yorkshire-Films/loanAdd.php"><i class="fa fa-plus"></i>   Add a loan</a></button>
                 <table class="table table-striped" id="editableTable">
                     <tbody>    
                     <thead>
@@ -335,7 +336,21 @@ include 'AccountProgram.php';
 
             </div>
 
+            
+  <!-------------------------------FOOTER------------------------------------------>
+            <footer>
+              <div class="info-container">
+                <p class="info"><a href="">HELP</a></p>
+                <p class="info"><a href="">PRIVACY POLICY</a></p>
+                <p class= "info"><a href="Jobs.php">JOBS</a></p>
+              </div>
 
+              <div class="social-container">
+                <span class="icon" src="" href="" ></span>
+                <span class="icon" src="" href="" ></span>
+                <span class="icon" src="" href="" ></span>
+              </div>
+            </footer>
 
 
             </div>
