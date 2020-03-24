@@ -8,6 +8,7 @@ abstract class Users {
     protected $email;
     protected $dob;
     protected $tel;
+    protected $usertype;
     
     function getUsername() {
         return $this->username;
@@ -65,18 +66,24 @@ abstract class Users {
     function setTel($tel) {
         $this->tel = $tel;
     }
+    function getUsertype() {
+        return $this->usertype;
+    }
 
-    public function __construct($username, $userfirstname, $usersurname, $email, $dob, $tel) {
+    function setUsertype($usertype) {
+        $this->usertype = $usertype;
+    }
+    
+    public function __construct($username, $password, $userfirstname, $usersurname, $email, $dob, $tel, $usertype) {
       $this->username = $username;
-      $this->password = "";
+      $this->password = $password;
       $this->userfirstname = $userfirstname;
       $this->usersurname = $usersurname;
       $this->email = $email;
       $this->dob = $dob;
       $this->tel = $tel;
-      
+      $this->usertype = $usertype; 
     }
-    
 
     private function is_valid_password($password) {
         $valid = TRUE;
