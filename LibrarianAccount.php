@@ -186,7 +186,42 @@ include 'AccountProgram.php';
 
             </div>
 
+<!-------------------------------ONLOAN LIST------------------------------------------>
+           <button class="accordion">Current On Loan List</button>
+            <div class="panel">     
 
+                <h2>Loan List</h2> 
+                <button class="btn btn-primary" id="add-btn-btn"><a  id="add-button"href="/#"><i class="fa fa-plus"></i>   Add a loan</a></button>
+                <table class="table table-striped" id="editableTable">
+                    <tbody>    
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Film Title</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Loan Date</th>
+                            <th scope="col">Username</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>      
+
+<?php foreach ($loantable as $loan): ?>
+                        <tr>
+                            <td><?= $loan['onloan_ID'] ?></td>
+                            <td><?= $loan['fm_TITLE'] ?></td>
+                            <td><?= $loan['due_DATE'] ?></td>
+                            <td><?= $loan['loan_DATE'] ?></td>
+                            <td><?= $loan['user_UN'] ?></td>
+                            <td class="actions">
+                                <a href="#" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="#" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                            </td>
+                        </tr>
+<?php endforeach; ?>
+                    </tbody>
+                </table>
+
+            </div>
 
 
             <!-------------------------------FILM CATALOG------------------------------------------>

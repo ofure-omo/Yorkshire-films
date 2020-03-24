@@ -11,7 +11,7 @@
        die($e->getMessage());
   }
 
-    /***************POPULATE MEMBER & FILM TABLES**********/ 
+    /***************POPULATE MEMBER & LIBRARIAN & FILM & ONLOAN TABLES**********/ 
     $fmtable = $pdo->query("SELECT Films.fm_ID, Films.fm_TITLE, Films.fm_LENGTH, Films.fm_RATING, Films.fm_YEAR, Directors.dir_NAME, Genres.genre, Towns.twn_NAME, Films.fm_AVAILABILITY, Films.FM_LOANCOUNT, Films.fm_SYNOPSIS  FROM `Films` 
                             INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID
                             INNER JOIN Directors on Films.fm_DIR = Directors.dir_ID
@@ -21,6 +21,11 @@
     $memtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Member')");
     
     $libtable = $pdo->query("SELECT * FROM Users WHERE user_TYPE in ('Librarian')");
+    
+    $loantable = $pdo->query("SELECT Onloan.onloan_ID, Films.fm_TITLE, Onloan.due_DATE,Onloan.loan_DATE, Users.user_UN FROM `Onloan` 
+                            INNER JOIN Films on Onloan.fm_ID  = Films.fm_ID
+                            INNER JOIN Users on Onloan.user_ID = Users.user_ID;
+                            ");
     
    /***************ADD MEMBER FORM**********/ 
     
