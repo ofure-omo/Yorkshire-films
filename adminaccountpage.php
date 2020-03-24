@@ -48,9 +48,9 @@ include 'AccountProgram.php';
 
 <!-------------------------------NAVBAR------------------------------------------>
                 <ul>
-                    <li><a href= "home.html">HOME</a></li>
-                    <li><a href= "films.html">FILMS</a></li>
-                    <li><a href= "login.html">LOG IN</a></li>
+                    <li><a href= "home.php">HOME</a></li>
+                    <li><a href= "films.php">FILMS</a></li>
+                    <li><a href= "login.php">LOG IN</a></li>
                 </ul>
             </nav>
 
@@ -96,7 +96,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getUserfirstname() ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -104,7 +104,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getUsersurname() ?></td>
                            <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -112,7 +112,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getEmail() ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -120,7 +120,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getDob() ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
 
@@ -129,7 +129,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getTel() ?></td>
                            <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
 
@@ -138,7 +138,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getUsername() ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -146,7 +146,7 @@ include 'AccountProgram.php';
                             <td><?php echo $member1->getPassword() ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -188,7 +188,7 @@ include 'AccountProgram.php';
                             <td><?= $member['user_TEL'] ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=<?= $member['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=<?= $member['user_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=<?= $member['user_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
 <?php endforeach; ?>
@@ -232,7 +232,7 @@ include 'AccountProgram.php';
                             <td><?= $librarian['user_TEL'] ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=<?= $librarian['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=<?= $member['user_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="userDelete.php?user_ID=<?= $member['user_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
 <?php endforeach; ?>
@@ -323,7 +323,7 @@ include 'AccountProgram.php';
 
                             <td class="actions">
                                 <a href="filmUpdate.php?fm_ID=<?= $film['fm_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?fm_ID=<?= $film['fm_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="filmDelete.php?fm_ID=<?= $film['fm_ID'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>
 <?php endforeach; ?>
