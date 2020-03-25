@@ -1,6 +1,8 @@
 <?php        
 
 include 'AutoLoader.php';
+include 'PDO_connection.php';
+
 
 
  if (isset($_POST['submit'])) {
@@ -195,16 +197,6 @@ div.sticky {
 
 <?php
 
-  const DB_DSN = 'mysql:host=localhost;dbname=Yorkshire-Films';
-  const DB_USER = 'root';
-  const DB_PASS = '';
-  
-   try {
-       $pdo = new PDO(DB_DSN, DB_USER, DB_PASS);
-       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   } catch (PDOException $e) {
-       die($e->getMessage());
-  }
 $firstName = "";
 $lastName = "";
 $dob = "";
@@ -213,11 +205,12 @@ $telNo = "";
 $userName = "";
 $password = "";
 $libCode = "";     
-
-$memMsg='';
+$libCodeRaw = ['', "eebygum", "eyup"];
+$libCodeAlt = ["Member", "Librarian", "Admin"];
+$memMsg=' ';
 
         
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit']) && empty($errors)) { //only inserts below into DB if submit button is pressed and errors array is empty
         global $memMsg;    
         $member1 = new Member (
                 $userName = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS),
@@ -228,7 +221,7 @@ $memMsg='';
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS),
                 $dob = filter_input(INPUT_POST, 'DOB', FILTER_SANITIZE_SPECIAL_CHARS),      
                 $telNo = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_SPECIAL_CHARS),
-                $userType = filter_input(INPUT_POST, 'lib_code', FILTER_SANITIZE_STRING) );
+                $userType = str_replace('lib_code', $libCodeAlt, $libCodeRaw) );
 
             
         $new_mem = $pdo->prepare("INSERT INTO Users ( user_UN,  user_FN, user_SN, user_EMAIL, user_DOB, user_TEL, user_TYPE, user_PWD)

@@ -1,7 +1,17 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
+<<<<<<< HEAD
 include 'loginProgram.php';
+=======
+include 'ReturnLoan.php';
+
+/****PRE POPULATE MEMBER LOAN DETAILS****/
+$loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
+    $loanhistory->execute([$_GET['user_ID']]);
+ 
+    
+>>>>>>> 96ad85cc047387e81a30a5010099e2a6aa3914be
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +34,23 @@ include 'loginProgram.php';
         <script type="text/javascript" src="dist/jquery.tabledit.js"></script>
         <script type="text/javascript" src="custom_table_edit.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+<!-------------------------------Code for onclick Return Film------------------------------------------>     
+    <script>
+        function returnLoan(id)
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+                {
+                    alert(xmlhttp.responseText);
+                }
+            };
+            xmlhttp.open("GET", "ReturnLoan.php?id=" +id, true);
+            xmlhttp.send();
+}
+    </script>
+        
     </head>
 
 <!-------------------------------BODY------------------------------------------> 
@@ -156,19 +183,25 @@ include 'loginProgram.php';
                 <h2>Your loan history</h2>          
                 <table class="table table-striped">
                     <tbody>    
-
+                    <thead>
 
                         <tr>
-                            <th>Film</th>
-                            <th>Loan date</th> 
-                            <th>Due date</th>
+
+                            <th>Film Name</th>
+                            <th>Loan Date</th> 
+                            <th>Due Date</th>
                             <th>Review</th>
+                            <th>Return Film</th>
+
                         </tr>
+                        </thead>
+                               
+                                    <?php foreach ($loanhistory as $loan): ?>
                         <tr>
-                            <td>Film 1</td>
-                            <td>20-03-20</td>
-                            <td>27-03-20</td>
-                            <td>   
+                            <td><?= $loan['fm_ID'] ?></td>
+                            <td><?= $loan['loan_DATE'] ?></td>
+                            <td><?= $loan['due_DATE'] ?></td>
+                            <td>
                                 <div class="rating">
                                     <input type="radio" id="r1" name="rg1">
                                     <label for="r1"><span class="fa fa-star"></label>
@@ -180,52 +213,28 @@ include 'loginProgram.php';
                                     <label for="r4"><span class="fa fa-star"></label>
                                     <input type="radio" id="r5" name="rg5">
                                     <label for="r5"><span class="fa fa-star"></label>
+                                                                    </div>
+                        <button class="btn btn-primary"> Submit</a></button>
 
-                                </div>
 
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Film 2</td>
-                            <td>20-03-20</td>
-                            <td>27-03-20</td>
-                            <td>       
-                                <div class="rating">
-                                    <input type="radio" id="fm1_1" name="fm1_1">
-                                    <label for="fm1_1"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_2" name="fm1_2">
-                                    <label for="fm1_2"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_3" name="fm1_3">
-                                    <label for="fm1_3"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_4" name="fm1_4">
-                                    <label for="fm1_4"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_5" name="fm1_5">
-                                    <label for="fm1_5"><span class="fa fa-star"></label>
+<td>
+                                <div id="returnloan">
+                                        <div style="text-align: center">
+                                            <button class="btn btn-primary"  onclick="returnLoan(1)">Return Film</button>
+                                        </div>
+                                        <br>
+                                    </a>
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Film 3</td>
-                            <td>20-03-20</td>
-                            <td>27-03-20</td>
-                            <td>       
-                                <div class="rating">
-                                    <input type="radio" id="r1" name="rg1">
-                                    <label for="r1"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r2" name="rg2">
-                                    <label for="r2"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r3" name="rg3">
-                                    <label for="r3"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r4" name="rg4">
-                                    <label for="r4"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r5" name="rg5">
-                                    <label for="r5"><span class="fa fa-star"></label>
-                                </div>
-                            </td>
-                        </tr>
+                            
+
+                      <?php endforeach; ?>
+                        
                     </tbody>
                 </table>
-            </div></div>
+            </div>
+</div>
 
 
             

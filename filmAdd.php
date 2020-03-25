@@ -127,21 +127,21 @@ include 'AccountProgram.php';
                 </div> 
                 <div class="col">        
                 Director:<select class="custom-select" name="filmDirector" id="filmDirector"  placeholder="Enter a genre" size="1" required>
-                        <option value="1">Animation</option>
-                        <option value="2">Biography</option>
-                        <option value="3">Comedy</option>
-                        <option value="4">Crime</option>
-                        <option value="5">Drama</option>
-                        <option value="6">Mystery</option>
-                        <option value="7">Romance</option>
-                        <option value="8">Sci-fi</option>
-                        <option value="9">Sport</option>
-                        <option value="10">Sport</option>
-                        <option value="11">Sport</option>
-                        <option value="12">Sport</option>
-                        <option value="13">Sport</option>
-                        <option value="14">Sport</option>
-                        <option value="15">Sport</option>
+                    <option value="1">Andrea Arnold</option>
+                        <option value="2">Cary Joji Fukunaga</option>
+                        <option value="3">Christopher Morris</option>
+                        <option value="4">Clio Barnard</option>
+                        <option value="5">Dan Hartley</option>
+                        <option value="6">David Hare</option>
+                        <option value="7">Francis Lee</option>
+                        <option value="8">Gordon Parry</option>
+                        <option value="9">Jack Clayton</option>
+                        <option value="10">John Schlesinger</option>
+                        <option value="11">Ken Loach</option>
+                        <option value="12">Lance Comfort</option>
+                        <option value="13">Lindsay Anderson</option>
+                        <option value="14">Lionel Jeffries</option>
+                        <option value="15">Mark Herman</option>
                     </select>
                     </div>
                     </div></div>

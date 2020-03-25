@@ -108,14 +108,15 @@ class User_validation {
         $cleanLibCode = filter_var($val, FILTER_SANITIZE_STRING);
         if (empty($val)){
             $userTypeMember = $cleanLibCode;
-            echo "You're a new member!"; //This is just to test the code and can be removed
-        } else if($cleanLibCode== "eyup"){
+            echo "";
+        } else if
+            ($cleanLibCode== "eyup"){
             $userTypeAdmin = $cleanLibCode;
-            echo "You're a new Admin!"; //This is just to test the code and can be removed
+            echo "";
         } else if 
-        ($cleanLibCode= "eebygum") {
+            ($cleanLibCode= "eebygum") {
             $userTypeLibrarian = $cleanLibCode; 
-            echo "You're a new Librarian!"; //This is just to test the code and can be removed
+            echo "";
         } else { //add if empty code to prevent error message
         $this->addError('lib_code', 'That code is incorrect, please try again or contact an administrator');
         }
