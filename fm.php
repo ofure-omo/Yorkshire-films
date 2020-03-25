@@ -27,18 +27,14 @@ $img4 = $row['image_4'];
 $img5 = $row['image_5'];
 $img6 = $row['image_6'];
 
-$sql2 = "SELECT due_DATE FROM Onloan "
-        . " INNER JOIN Films on Films.fm_ID = Onloan.fm_ID"
-        . " WHERE Films.fm_ID = '" . $id . "';";
-
+$sql2 = "SELECT user_DOB FROM Users WHERE user_ID = 10;";
 $result2 = mysqli_query($conn, $sql2);
-$row2 = mysqli_fetch_assoc($result);
-$duedate = $row2['due_DATE'];
+$row2 = mysqli_fetch_assoc($result2);
+$dob = $row2['user_DOB'];
 
-if (strtotime($duedate) < date("Y-m-d")) {
-    $updateavailability = "UPDATE Films SET fm_AVAILABILITY = 'Available' WHERE fm_ID = '".$id."';";
-    $updateavailabilityresult = mysqli_query($conn, $updateavailability);
-}
+$today = date("Y-m-d");
+$diff = date_diff(date_create($dob), date_create($today));
+//echo 'Age is '.$diff->format('%y');
 ?>
 
 
@@ -189,7 +185,11 @@ if (strtotime($duedate) < date("Y-m-d")) {
 
 <?php 
 
-if ($availability == 'Available') {
+if ($age > $diff->format('%y')) {
+    ?>
+    <h4 style='text-align: center; background-color: red;'>You are too young to loan out this film.</h4>
+<?php
+} else if ($availability == 'Available') {
     ?>
                 <div id="loan">
                     <a onclick="loanFilm(<?php echo $id; ?>)">
@@ -207,8 +207,7 @@ if ($availability == 'Available') {
             }
 
             ?>
-
-
+                
             <p style="text-align:center;font-family: 'Sen', sans-serif;">  
                 <b>Year Released:</b> <?php echo $year; ?>
             </p>

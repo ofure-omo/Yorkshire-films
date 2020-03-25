@@ -1,12 +1,12 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
+include 'ReturnLoan.php';
 
 /****PRE POPULATE MEMBER LOAN DETAILS****/
 $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
     $loanhistory->execute([$_GET['user_ID']]);
     
-    //$loanhistory = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +29,23 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
         <script type="text/javascript" src="dist/jquery.tabledit.js"></script>
         <script type="text/javascript" src="custom_table_edit.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+<!-------------------------------Code for onclick Return Film------------------------------------------>     
+    <script>
+        function returnLoan(id)
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+                {
+                    alert(xmlhttp.responseText);
+                }
+            };
+            xmlhttp.open("GET", "ReturnLoan.php?id=" +id, true);
+            xmlhttp.send();
+}
+    </script>
+        
     </head>
 
 <!-------------------------------BODY------------------------------------------> 
@@ -164,10 +181,13 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
                     <thead>
 
                         <tr>
+
                             <th>Film Name</th>
                             <th>Loan Date</th> 
                             <th>Due Date</th>
-                            <th>Leave a Review</th>
+                            <th>Review</th>
+                            <th>Return Film</th>
+
                         </tr>
                         </thead>
                                
@@ -191,12 +211,18 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
                                                                     </div>
 
                             </td>
-                            
+<td>
+                                <div id="returnloan">
+                                    <a onclick="returnLoan(1)">
+                                        <div style="text-align: center">
+                                            <button>Return Film</button>
+                                        </div>
+                                        <br>
+                                    </a>
                                 </div>
+                            </td>
+                            
 
-                         
-                        </tr>
-                        
                       <?php endforeach; ?>
                         
                     </tbody>
