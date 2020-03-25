@@ -78,11 +78,11 @@ include 'loginProgram.php';
                  <span class="error"></span>
                  <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password"  required> 
                  <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
-<<<<<<< HEAD
+
                  <button type="submit" name="login" id="submit" value="submit" form="form1" class="form">SUBMIT</button>    
-=======
+
                  <button type="submit" id="submit" value="submit" form="form1" class="form">LOG IN</button>    
->>>>>>> 6a158972e80798ced1474d6d07a5367dc4b3437e
+
              </form>
          
               <div class="create-acc">
