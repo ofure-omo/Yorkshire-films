@@ -88,7 +88,7 @@ $stmt->execute([$GET['user_ID']]);*/
 
 if (isset($_GET['fm_ID'])) {
 	$id = $_GET['fm_ID'];
-	$pdo->query("DELETE FROM Users WHERE fm_ID= " . $id . "; ");
+	$pdo->query("DELETE FROM Films WHERE fm_ID= " . $id . "; ");
 	echo "<div class='msg'>
         <h2 class='del'>Film has been deleted</h2>
         </div>";

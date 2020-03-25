@@ -1,6 +1,7 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
+include 'loginProgram.php';
 ?>
 
 <!DOCTYPE html>

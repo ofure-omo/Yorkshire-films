@@ -79,10 +79,6 @@ include 'loginProgram.php';
                  <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password"  required> 
                  <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
 
-                 <button type="submit" name="login" id="submit" value="submit" form="form1" class="form">SUBMIT</button>    
-
-                 <button type="submit" id="submit" value="submit" form="form1" class="form">LOG IN</button>    
-
                  <button type="submit" id="submit" value="submit" form="form1" name='login' class="form">LOG IN</button>    
              </form>
          
