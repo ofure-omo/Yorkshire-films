@@ -83,6 +83,7 @@ include 'loginProgram.php';
 
                  <button type="submit" id="submit" value="submit" form="form1" class="form">LOG IN</button>    
 
+                 <button type="submit" id="submit" value="submit" form="form1" name='login' class="form">LOG IN</button>    
              </form>
          
               <div class="create-acc">

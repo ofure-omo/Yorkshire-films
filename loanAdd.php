@@ -1,6 +1,6 @@
 
 <?php
-include 'AutoLoader.php';
+
 include 'AccountProgram.php';
 
 ?>
@@ -9,7 +9,7 @@ include 'AccountProgram.php';
 <!-----------------------HEAD------------------------>  
 <html>
     <head>
-        <title>Yorkshire films - Your account</title>
+        <title>Yorkshire films - Add a loan item</title>
         <link rel=stylesheet href="account.css">
               <link rel=stylesheet href="home.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>

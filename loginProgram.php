@@ -1,4 +1,7 @@
  <?php
+ 
+ include 'Autoloader.php';
+ 
   const DB_DSN = 'mysql:host=localhost;dbname=Yorkshire-Films';
   const DB_USER = 'root';
    const DB_PASS = '';
@@ -18,6 +21,14 @@
       
    $email = (filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS));
    $password = trim((filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS)));
+   
+   if(password_verify($password, $hashed_password)) {
+    // If the password inputs matched the hashed password in the database
+    // Do something, you know... log them in.
+       echo "password matches";
+} else {
+    echo "passwords do not match";
+}
    //$userType ='';
    
     $login = $pdo->prepare("SELECT user_TYPE FROM Users WHERE user_EMAIL = :email");

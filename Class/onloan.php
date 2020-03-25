@@ -2,13 +2,13 @@
 
 class onloan {
     
-    protected $filmtitle;
+    protected $filmid;
     protected $duedate;
     protected $loandate;
     protected $username;
     
-    function getFilmtitle() {
-        return $this->filmtitle;
+    function getFilmId() {
+        return $this->filmid;
     }
 
     function getDuedate() {
@@ -39,8 +39,8 @@ class onloan {
         $this->username = $username;
     }
 
-      public function __construct($filmtitle, $duedate, $loandate, $username) {
-      $this->filmtitle = $filmtitle;
+      public function __construct($filmid, $duedate, $loandate, $username) {
+      $this->filmid = $filmid;
       $this->duedate = $duedate;
       $this->loandate = $loandate;
       $this->username = $username;      

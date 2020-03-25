@@ -1,5 +1,7 @@
 <!----------------------DATABASE CONNECTION & FORM SUBMIT --------->
     <?php
+    //include 'Autoloader.php';
+    
   const DB_DSN = 'mysql:host=localhost;dbname=Yorkshire-Films';
   const DB_USER = 'root';
    const DB_PASS = '';
@@ -10,7 +12,7 @@
    } catch (PDOException $e) {
        die($e->getMessage());
   }
-
+ 
     /***************POPULATE MEMBER & LIBRARIAN & FILM & ONLOAN TABLES**********/ 
     $fmtable = $pdo->query("SELECT Films.fm_ID, Films.fm_TITLE, Films.fm_LENGTH, Films.fm_RATING, Films.fm_YEAR, Directors.dir_NAME, Genres.genre, Towns.twn_NAME, Films.fm_AVAILABILITY, Films.FM_LOANCOUNT, Films.fm_SYNOPSIS  FROM `Films` 
                             INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID
@@ -166,16 +168,29 @@
         $loanDate = filter_input(INPUT_POST, 'loanDate', FILTER_SANITIZE_SPECIAL_CHARS);
         $username = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_SPECIAL_CHARS);
         
-        
-
-        $new_loan = $pdo->prepare("INSERT INTO Onloan ( fm_TITLE, loan_DATE, due_DATE, user_UN)
-              VALUES (  :fmtitle, :loandate, :duedate, :username)");
+      $getFilmID = $pdo->prepare("SELECT fm_ID FROM Films WHERE fm_title = :filmName");  
+      $getFilmID->execute([
+             'filmName' => $filmName,
+                ]);
+      $fm_ID = $getFilmID->fetchAll();
+      $newfm_ID =  $fm_ID['0']['fm_ID'];
+             
+              
+      $getUserID = $pdo->prepare("SELECT user_ID FROM Users WHERE user_UN = :username;");  
+      $getUserID->execute([
+             'username' => $username,
+                ]);
+      $user_ID = $getUserID->fetchAll();
+      $newuser_ID =  $user_ID['0']['user_ID'];
+       
+        $new_loan = $pdo->prepare("INSERT INTO Onloan ( fm_ID, loan_DATE, due_DATE, user_ID)
+              VALUES (  :fmID, :loandate, :duedate, :userID)");
 
         $new_loan->execute([
-             'fmtitle' => $filmName,
+             'fmID' => $newfm_ID,
             'loandate' =>  $dueDate,
             'duedate' => $loanDate,
-            'username' => $username,
+            'userID' =>  $newuser_ID,
             
                 ]);
 

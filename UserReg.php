@@ -208,7 +208,8 @@ $memMsg='';
         global $memMsg;    
         $member1 = new Member (
                 $userName = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS),
-                $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING),      
+                $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING),
+                $hashed_password = password_hash($password, PASSWORD_BCRYPT),
                 $firstName = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS),
                 $lastName = filter_input(INPUT_POST, 'surname', FILTER_SANITIZE_SPECIAL_CHARS),
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS),
@@ -222,7 +223,7 @@ $memMsg='';
 
         $new_mem->execute([
             'username' => $userName,
-            'password' => $password,
+            'password' => $hashed_password,
             'userfn' =>  $firstName,
             'userln' => $lastName,
             'email' => $email,
@@ -236,6 +237,3 @@ $memMsg='';
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $memMsg;
     }
-   
-
-
