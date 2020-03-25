@@ -45,6 +45,8 @@ div.sticky {
         <meta name="viewport" content="width=device-width, initial-scale=1">
                
         <link rel=stylesheet href="account.css">
+        <link rel=stylesheet href="home.css">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
