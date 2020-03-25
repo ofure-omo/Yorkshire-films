@@ -80,7 +80,7 @@ include 'loginProgram.php';
                  <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
 <<<<<<< HEAD  
 =======
-                 <button type="submit" id="submit" value="submit" form="form1" name= 'login' class="form">LOG IN</button>    
+                 <button type="submit" id="submit" value="submit" form="form1" name='login' class="form">LOG IN</button>    
 >>>>>>> 6a158972e80798ced1474d6d07a5367dc4b3437e
              </form>
          
