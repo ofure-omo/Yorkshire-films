@@ -10,7 +10,9 @@ include 'ReturnLoan.php';
 $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
     $loanhistory->execute([$_GET['user_ID']]);
  
-    
+ /****PRE POPULATE MEMBER DETAILS****/
+$userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
+    $userDetails->execute([$_GET['user_ID']]);   
 
 ?>
 
@@ -54,9 +56,8 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
     </head>
 
 <!-------------------------------BODY------------------------------------------> 
-    
+<body>
         <div class="container-sm">
-            <body>
 
 <!-----------------------------HAMBURGER NAVBAR------------------------------------------>
             <nav class = "nav main-nav">
@@ -93,87 +94,57 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
             </div>
 
 
+            
  <!-------------------------------WELCOME MESSAGE------------------------------------------>
             <h1>Hello! Welcome to the the Member Portal</h1>
 
 
 <!-------------------------------YOUR DETAILS------------------------------------------>  
             <?php
-            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
-
-            $member1->setPassword("hello345")
+//            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
+//
+//            $member1->setPassword("hello345")
             ?>
 
             <button class="accordion">View your details</button>
             <div class="panel">
 
-                <h2>Your details</h2>  
-
+                <h2>Your details</h2> 
+                
+                
                 <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <td>First name</td>
-                            <td><?php echo $member1->getUserfirstname() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Second name</td>
-                            <td><?php echo $member1->getUsersurname() ?></td>
-                           <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email address</td>
-                            <td><?php echo $member1->getEmail() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Date of birth</td>
-                            <td><?php echo $member1->getDob() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
+                    <tbody>    
+                    <thead>
 
                         <tr>
-                            <td>Telephone number</td>
-                            <td><?php echo $member1->getTel() ?></td>
-                           <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
 
+                            <th>First Name</th>
+                            <th>Last Name</th> 
+                            <th>Date of Birth</th>
+                            <th>Contact No.</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                               
+                                    <?php foreach ($userDetails as $user): ?>
                         <tr>
-                            <td>Username</td>
-                            <td><?php echo $member1->getUsername() ?></td>
+                            <td><?= $user['user_FN'] ?></td>
+                            <td><?= $user['user_SN'] ?></td>
+                            <td><?= $user['user_DOB'] ?></td>
+                             <td><?= $user['user_TEL'] ?></td>
+                             <td><?= $user['user_UN'] ?></td>
+                            <td><?= $user['user_PWD'] ?></td>
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td><?php echo $member1->getPassword() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
+                      <?php endforeach; ?>
+                        
                     </tbody>
-                </table>  
-            </div>
-
-
+                </table>
+                </div>
 
 <!----------------------------ON LOAN LIST------------------------------------------>    
             <button class="accordion">View your loan history</button>
