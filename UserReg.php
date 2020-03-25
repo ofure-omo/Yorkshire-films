@@ -32,54 +32,65 @@ include 'AutoLoader.php';
   box-sizing: border-box;
  }
 
+div.sticky {
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  }
     </style>
 <head>
         <meta charset="UTF-8">
         <title>Registration page</title>
-        <link rel=stylesheet href="home.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+               
+        <link rel=stylesheet href="account.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="dist/jquery.tabledit.js"></script>
+        <script type="text/javascript" src="custom_table_edit.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 
 <body>
-<div class="headerLogo">
-        <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Yorkshire Film Library</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <!--navbar (hamburger menu)-->
+      <nav class = "nav main-nav">
+     <div class="toggle">
+        <i class= "fa fa-bars" aria-hidden="true"></i>
+      </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="Home.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Films.php">Films<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+      <!--navbar (normal)-->
+        <ul>
+          <li><a href= "home.php">HOME</a></li>
+          <li><a href= "Films.php">FILMS</a></li>
+          <li><a href= "login.php">LOG IN</a></li>
+           <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
+        </ul>
+      </nav>
+
+    <!--Slogan-->
+            <div class="flex-container">
+                <div>BROWSE</div>
+                <div>BORROW</div>
+                <div>ENJOY</div>
+                <div>REPEAT</div>
+            </div>
     
+  <div class="headerLogo">
+      <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
+    </div>    
         <body>
             <div class="sticky">
                 <h1 style="font: 25px Georgia, serif; line-height: 1.8;background-color:grey;" ><center> YORKSHIRE FILMS</center></h1>
             </div>
-
     <p>    
     <h3>Enter your details below to start borrowing our films.  </h3>  
     </p>
