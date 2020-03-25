@@ -161,6 +161,8 @@ h2{padding-bottom:20px; }
 
 #add-btn{margin-bottom: 40px}
 
+#returnloan{float: right;}
+
 .trash, .edit {
   	display: inline-flex;
   	text-align: center;

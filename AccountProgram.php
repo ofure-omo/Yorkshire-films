@@ -29,9 +29,7 @@ $loantable = $pdo->query("SELECT Onloan.onloan_ID, Films.fm_TITLE, Onloan.due_DA
                             INNER JOIN Films on Onloan.fm_ID  = Films.fm_ID
                             INNER JOIN Users on Onloan.user_ID = Users.user_ID;
                             ");
-/* * **PRE POPULATE MEMBER LOAN DETAILS*** */
-$loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
-$loanhistory->execute([$_GET['user_ID']]);
+
 
 
 /* * *************ADD MEMBER FORM********* */

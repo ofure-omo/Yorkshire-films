@@ -6,6 +6,7 @@ include 'ReturnLoan.php';
 /****PRE POPULATE MEMBER LOAN DETAILS****/
 $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
     $loanhistory->execute([$_GET['user_ID']]);
+ 
     
 ?>
 
@@ -209,13 +210,14 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
                                     <input type="radio" id="r5" name="rg5">
                                     <label for="r5"><span class="fa fa-star"></label>
                                                                     </div>
+                        <button class="btn btn-primary"> Submit</a></button>
+
 
                             </td>
 <td>
                                 <div id="returnloan">
-                                    <a onclick="returnLoan(1)">
                                         <div style="text-align: center">
-                                            <button>Return Film</button>
+                                            <button class="btn btn-primary"  onclick="returnLoan(1)">Return Film</button>
                                         </div>
                                         <br>
                                     </a>
