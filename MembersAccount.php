@@ -1,6 +1,12 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
+
+/****PRE POPULATE MEMBER LOAN DETAILS****/
+$loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
+    $loanhistory->execute([$_GET['user_ID']]);
+    
+    //$loanhistory = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -155,19 +161,22 @@ include 'AccountProgram.php';
                 <h2>Your loan history</h2>          
                 <table class="table table-striped">
                     <tbody>    
-
+                    <thead>
 
                         <tr>
-                            <th>Film</th>
-                            <th>Loan date</th> 
-                            <th>Due date</th>
-                            <th>Review</th>
+                            <th>Film Name</th>
+                            <th>Loan Date</th> 
+                            <th>Due Date</th>
+                            <th>Leave a Review</th>
                         </tr>
+                        </thead>
+                               
+                                    <?php foreach ($loanhistory as $loan): ?>
                         <tr>
-                            <td>Film 1</td>
-                            <td>20-03-20</td>
-                            <td>27-03-20</td>
-                            <td>   
+                            <td><?= $loan['fm_ID'] ?></td>
+                            <td><?= $loan['loan_DATE'] ?></td>
+                            <td><?= $loan['due_DATE'] ?></td>
+                            <td>
                                 <div class="rating">
                                     <input type="radio" id="r1" name="rg1">
                                     <label for="r1"><span class="fa fa-star"></label>
@@ -179,52 +188,21 @@ include 'AccountProgram.php';
                                     <label for="r4"><span class="fa fa-star"></label>
                                     <input type="radio" id="r5" name="rg5">
                                     <label for="r5"><span class="fa fa-star"></label>
+                                                                    </div>
 
+                            </td>
+                            
                                 </div>
 
-                            </td>
+                         
                         </tr>
-                        <tr>
-                            <td>Film 2</td>
-                            <td>20-03-20</td>
-                            <td>27-03-20</td>
-                            <td>       
-                                <div class="rating">
-                                    <input type="radio" id="fm1_1" name="fm1_1">
-                                    <label for="fm1_1"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_2" name="fm1_2">
-                                    <label for="fm1_2"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_3" name="fm1_3">
-                                    <label for="fm1_3"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_4" name="fm1_4">
-                                    <label for="fm1_4"><span class="fa fa-star"></label>
-                                    <input type="radio" id="fm1_5" name="fm1_5">
-                                    <label for="fm1_5"><span class="fa fa-star"></label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Film 3</td>
-                            <td>20-03-20</td>
-                            <td>27-03-20</td>
-                            <td>       
-                                <div class="rating">
-                                    <input type="radio" id="r1" name="rg1">
-                                    <label for="r1"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r2" name="rg2">
-                                    <label for="r2"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r3" name="rg3">
-                                    <label for="r3"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r4" name="rg4">
-                                    <label for="r4"><span class="fa fa-star"></label>
-                                    <input type="radio" id="r5" name="rg5">
-                                    <label for="r5"><span class="fa fa-star"></label>
-                                </div>
-                            </td>
-                        </tr>
+                        
+                      <?php endforeach; ?>
+                        
                     </tbody>
                 </table>
-            </div></div>
+            </div>
+</div>
 
 
             
