@@ -7,9 +7,10 @@ include 'loginProgram.php';
 include 'ReturnLoan.php';
 
 /****PRE POPULATE MEMBER LOAN DETAILS****/
+
 $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
-    $loanhistory->execute([$_GET['user_ID']]);
- 
+$loanhistory->execute([$_GET['user_ID']]);
+
  /****PRE POPULATE MEMBER DETAILS****/
 $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
     $userDetails->execute([$_GET['user_ID']]);   
@@ -117,7 +118,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                     <thead>
 
                         <tr>
-
+                            <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th> 
                             <th>Date of Birth</th>
@@ -130,6 +131,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                                
                                     <?php foreach ($userDetails as $user): ?>
                         <tr>
+                            <td><?= $user['user_ID'] ?></td>
                             <td><?= $user['user_FN'] ?></td>
                             <td><?= $user['user_SN'] ?></td>
                             <td><?= $user['user_DOB'] ?></td>
@@ -137,7 +139,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                              <td><?= $user['user_UN'] ?></td>
                             <td><?= $user['user_PWD'] ?></td>
                             <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="memUpdate.php?user_ID=<?= $user['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                       <?php endforeach; ?>
@@ -167,7 +169,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                         </tr>
                         </thead>
                                
-                                    <?php foreach ($loanhistory as $loan): ?>
+                                    <?php foreach ($loanhistory as $loan):?>
                         <tr>
                             <td><?= $loan['fm_ID'] ?></td>
                             <td><?= $loan['loan_DATE'] ?></td>

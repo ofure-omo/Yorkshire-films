@@ -2,15 +2,9 @@
 include 'autoloader.php';
 include 'AccountProgram.php';
  
-            $admin1 = new Admin('e.drew', 'Eris', 'Drew', 'edrew@t4t.com', '1989-01-01', '07111998633');
-            $admin1->setPassword("hello123");
-            $film1 = new Film('Journeyman', '92', '15', '2017', 'Available', '10', 'Paddy Considine', 'Drama', 'Sheffield');
-            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
-            $member1->setPassword("hello666");
-            $librarian1 = new Librarian('Jane4512', 'Jane', 'Doe', 'doe@hotmail.com', '1999-01-31', '07888235633');
-            $librarian1->setPassword("hello345");
-            $onloan1 = new onloan('Gods Own Country', '2020-04-05', '2020-03-05', 'e.fisher');
-            $onloan2 = new onloan('Dark River', '2020-04-06', '2020-03-06', 'm.zuckerberg');          
+           /****PRE POPULATE MEMBER DETAILS****/
+$userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
+    $userDetails->execute([$_GET['user_ID']]);            
 ?>
 
 <!DOCTYPE html>
@@ -80,79 +74,51 @@ include 'AccountProgram.php';
 
 <!-------------------------------YOUR DETAILS------------------------------------------>  
             <?php
-            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
-
-            $member1->setPassword("hello345")
+//            $member1 = new Member('Jeff12', 'Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
+//
+//            $member1->setPassword("hello345")
             ?>
 
             <button class="accordion">View your details</button>
             <div class="panel">
 
-                <h2>Your details</h2>  
-
+                <h2>Your details</h2> 
+                
+                
                 <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <td>First name</td>
-                            <td><?php echo $member1->getUserfirstname() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Second name</td>
-                            <td><?php echo $member1->getUsersurname() ?></td>
-                           <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email address</td>
-                            <td><?php echo $member1->getEmail() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Date of birth</td>
-                            <td><?php echo $member1->getDob() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
+                    <tbody>    
+                    <thead>
 
                         <tr>
-                            <td>Telephone number</td>
-                            <td><?php echo $member1->getTel() ?></td>
-                           <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th> 
+                            <th>Date of Birth</th>
+                            <th>Contact No.</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th></th>
                         </tr>
-
+                        </thead>
+                               
+                                    <?php foreach ($userDetails as $user): ?>
                         <tr>
-                            <td>Username</td>
-                            <td><?php echo $member1->getUsername() ?></td>
+                            <td><?= $user['user_ID'] ?></td>
+                            <td><?= $user['user_FN'] ?></td>
+                            <td><?= $user['user_SN'] ?></td>
+                            <td><?= $user['user_DOB'] ?></td>
+                             <td><?= $user['user_TEL'] ?></td>
+                             <td><?= $user['user_UN'] ?></td>
+                            <td><?= $user['user_PWD'] ?></td>
                             <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                                <a href="memUpdate.php?user_ID=<?= $user['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td><?php echo $member1->getPassword() ?></td>
-                            <td class="actions">
-                                <a href="memUpdate.php?user_ID=" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                <a href="userDelete.php?user_ID=" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                            </td>
-                        </tr>
+                      <?php endforeach; ?>
+                        
                     </tbody>
-                </table>  
-            </div>
+                </table>
+                </div>
 
 
 
