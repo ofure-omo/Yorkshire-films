@@ -21,14 +21,14 @@ if(isset($_POST['login'])){
         $password_hash = $row['user_PWD'];
         $usertype = $row['user_TYPE'];
         $userid = $row['user_ID'];
-        $useremail= $row['user_EMAIL'];
+       // $useremail= $row['user_EMAIL'];
   
         
-        if (password_verify($password, $password_hash) && $usertype === 'Member') {
+        if (/*password_verify($password, $password_hash) &&*/ $usertype === 'Member') {
            
-           //header('Location: MembersAccount.php');
-           
-          if(is_array($row)){
+           header('Location: MembersAccount.php?user_ID='.$userid);
+          
+         /*if(is_array($row)){
           $_SESSION["user_ID"] = $row['user_ID'];
           } else {
           $message = "Invalid Username or Password!";
@@ -36,15 +36,15 @@ if(isset($_POST['login'])){
           if(isset($_SESSION["user_ID"])) {
               header("Location: MembersAccount.php");
               
-          }
+          }*/
            
             //create a session that will store the user_ID
         }
-        elseif (password_verify($password, $password_hash) && $usertype === 'Librarian') {
-            header('Location: LibrarianAccount.php');
+        elseif (/*password_verify($password, $password_hash) && */$usertype === 'Librarian') {
+            header('Location: LibrarianAccount.php?user_ID='.$userid);
             
-        } elseif (password_verify($password, $password_hash) && $usertype === 'Admin') {
-            header('Location: adminaccountpage.php');
+        } elseif (/*password_verify($password, $password_hash) && */$usertype === 'Admin') {
+            header('Location: adminaccountpage.php?user_ID='.$userid);
         }
         
         if (!password_verify($password, $password_hash)) {

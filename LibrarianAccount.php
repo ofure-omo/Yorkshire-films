@@ -214,7 +214,7 @@ include 'AccountProgram.php';
                             <td><?= $loan['loan_DATE'] ?></td>
                             <td><?= $loan['user_UN'] ?></td>
                             <td class="actions">
-                                <a href="#" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                <a href="updateLoan.php?onloan_ID=<?= $loan['onloan_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="#" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                             </td>
                         </tr>

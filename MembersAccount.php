@@ -1,9 +1,9 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
-<<<<<<< HEAD
+
 include 'loginProgram.php';
-=======
+
 include 'ReturnLoan.php';
 
 /****PRE POPULATE MEMBER LOAN DETAILS****/
@@ -11,7 +11,7 @@ $loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
     $loanhistory->execute([$_GET['user_ID']]);
  
     
->>>>>>> 96ad85cc047387e81a30a5010099e2a6aa3914be
+
 ?>
 
 <!DOCTYPE html>

@@ -63,7 +63,7 @@ include 'AccountProgram.php';
                 <div>REPEAT</div>
             </div>
 
-<!-----------------------Add film form------------------------>  
+<!-----------------------Add loan form------------------------>  
 
 
 <div class="add-form"> 

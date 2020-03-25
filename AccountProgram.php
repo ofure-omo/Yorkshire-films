@@ -61,7 +61,7 @@ if (isset($_POST["memSubmit"])) {
     ]);
 
     $memMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php" >View Results</a></strong>
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href= "javascript:history.go(-2);" >View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
     return $memMsg;
 }
@@ -95,7 +95,7 @@ if (isset($_POST["libSubmit"])) {
     ]);
 
     $libMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php" >View Results</a></strong>
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="javascript:history.go(-2);" >View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
     return $libMsg;
 }
@@ -149,7 +149,7 @@ if (isset($_POST["fmSubmit"]) && !is_numeric($_POST['filmLength'])) {
     ]);
 
     $fmMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a></strong>
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="javascript:history.go(-2)">View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
     return $fmMsg;
 } elseif (isset($_POST["fmSubmit"])) {
@@ -197,7 +197,7 @@ if (isset($_POST["loanSubmit"])) {
     ]);
 
     $loanMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Success!         <a href="/Yorkshire-Films/LibrarianAccount.php" >View Results</a></strong>
+                <strong> <i class="icon fa fa-check"></i> Success!         <a href="javascript:history.go(-2)" >View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
     return $loanMsg;
 }
@@ -226,7 +226,7 @@ if (isset($_GET['user_ID'])) {
 
 
         $memUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> Updated!         <a href="/Yorkshire-Films/LibrarianAccount.php">View Results</a></strong>
+                <strong> <i class="icon fa fa-check"></i> Updated!         <a href="javascript:history.go(-2)">View Results</a></strong>
              <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
         return $memUpdateMsg;
     }
@@ -305,7 +305,31 @@ if (isset($_GET['fm_ID'])) {
     }
 }
         
-       
+ /* * ************* UPDATE LOAN FORM********* */
+global $loanUpdateMsg;
+
+
+if (isset($_GET['onloan_ID'])) {
+    if (!empty($_POST['loanUpdate'])) {
+
+        $loanid = $_GET['onloan_ID'];
+        $filmName = isset($_POST['filmName']) ? $_POST['filmName'] : '';
+        $dueDate = isset($_POST['dueDate']) ? $_POST['dueDate'] : '';
+        $loanDate = isset($_POST['loanDate']) ? $_POST['loanDate'] : '';
+        
+        
+
+
+        $stmt = $pdo->prepare('UPDATE Onloan SET user_ID = ?, user_FN =? , user_SN =? , user_UN =? ,user_EMAIL =? , user_DOB =? , user_TEL =?, user_TYPE =?    WHERE user_ID = ? ');
+        $stmt->execute(([$userid, $firstName, $lastName, $userName, $email, $dob, $telNo, $userType, $_GET['user_ID']]));
+
+
+        $loanUpdateMsg = '<div class="alert alert-success alert-dismissible fade show">
+                <strong> <i class="icon fa fa-check"></i> Updated!         <a href="javascript:history.go(-2)">View Results</a></strong>
+             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+        return $loanUpdateMsg;
+    }
+}      
 
    
  
