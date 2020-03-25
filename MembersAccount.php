@@ -1,6 +1,7 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
+include 'ReturnLoan.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,23 @@ include 'AccountProgram.php';
         <script type="text/javascript" src="dist/jquery.tabledit.js"></script>
         <script type="text/javascript" src="custom_table_edit.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+<!-------------------------------Code for onclick Return Film------------------------------------------>     
+    <script>
+        function returnLoan(id)
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+                {
+                    alert(xmlhttp.responseText);
+                }
+            };
+            xmlhttp.open("GET", "ReturnLoan.php?id=" +id, true);
+            xmlhttp.send();
+}
+    </script>
+        
     </head>
 
 <!-------------------------------BODY------------------------------------------> 
@@ -162,6 +180,7 @@ include 'AccountProgram.php';
                             <th>Loan date</th> 
                             <th>Due date</th>
                             <th>Review</th>
+                            <th>Return film</th>
                         </tr>
                         <tr>
                             <td>Film 1</td>
@@ -183,6 +202,16 @@ include 'AccountProgram.php';
                                 </div>
 
                             </td>
+                            <td>
+                                <div id="returnloan">
+                                    <a onclick="returnLoan(1)">
+                                        <div style="text-align: center">
+                                            <button>Return Film</button>
+                                        </div>
+                                        <br>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Film 2</td>
@@ -202,6 +231,16 @@ include 'AccountProgram.php';
                                     <label for="fm1_5"><span class="fa fa-star"></label>
                                 </div>
                             </td>
+                            <td>
+                                <div id="returnloan">
+                                    <a onclick="returnLoan(2)">
+                                        <div style="text-align: center">
+                                            <button>Return Film</button>
+                                        </div>
+                                        <br>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Film 3</td>
@@ -219,6 +258,16 @@ include 'AccountProgram.php';
                                     <label for="r4"><span class="fa fa-star"></label>
                                     <input type="radio" id="r5" name="rg5">
                                     <label for="r5"><span class="fa fa-star"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div id="returnloan">
+                                    <a onclick="returnLoan(3)">
+                                        <div style="text-align: center">
+                                            <button>Return Film</button>
+                                        </div>
+                                        <br>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
