@@ -80,6 +80,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
 
             <!-------------------------------SLOGAN------------------------------------------>
             <div class="flex-container">
+                <div>YORKSHIRE FILMS </br> </div>
                 <div>BROWSE</div>
                 <div>BORROW</div>
                 <div>ENJOY</div>
