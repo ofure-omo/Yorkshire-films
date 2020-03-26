@@ -3,7 +3,7 @@
 include 'AutoLoader.php';
 include 'PDO_connection.php';
 
-
+include 'userRegProgram.php';
 
  if (isset($_POST['submit'])) {
         $validation = new User_validation($_POST);
@@ -97,7 +97,7 @@ div.sticky {
             </div>
     <p>    
     <h3>Enter your details below to start borrowing our films.  </h3>  
-    </p>
+    </p><div><?php echo $loginMsg; ?></div>
 <div class="new-user">
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
     <div class="pure-form pure-form-aligned" >
@@ -195,51 +195,3 @@ div.sticky {
     </body>
 </html>
 
-<?php
-
-$firstName = "";
-$lastName = "";
-$dob = "";
-$email = "";
-$telNo = "";
-$userName = "";
-$password = "";
-$libCode = "";     
-$libCodeRaw = ['', "eebygum", "eyup"];
-$libCodeAlt = ["Member", "Librarian", "Admin"];
-$memMsg=' ';
-
-        
-        if (isset($_POST['submit']) && empty($errors)) { //only inserts below into DB if submit button is pressed and errors array is empty
-        global $memMsg;    
-        $member1 = new Member (
-                $userName = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS),
-                $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING),
-                $hashed_password = password_hash($password, PASSWORD_BCRYPT),
-                $firstName = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS),
-                $lastName = filter_input(INPUT_POST, 'surname', FILTER_SANITIZE_SPECIAL_CHARS),
-                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS),
-                $dob = filter_input(INPUT_POST, 'DOB', FILTER_SANITIZE_SPECIAL_CHARS),      
-                $telNo = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_SPECIAL_CHARS),
-                $userType = str_replace('lib_code', $libCodeAlt, $libCodeRaw) );
-
-            
-        $new_mem = $pdo->prepare("INSERT INTO Users ( user_UN,  user_FN, user_SN, user_EMAIL, user_DOB, user_TEL, user_TYPE, user_PWD)
-              VALUES (  :username, :userfn, :userln, :email, :dob, :tel, :type, :password)");
-
-        $new_mem->execute([
-            'username' => $userName,
-            'password' => $hashed_password,
-            'userfn' =>  $firstName,
-            'userln' => $lastName,
-            'email' => $email,
-            'dob' =>  $dob,
-            'tel' => $telNo,
-            'type' => $userType,
-                ]);
-
-        $memMsg = '<div class="alert alert-success alert-dismissible fade show">
-                <strong> <i class="icon fa fa-check"></i> You have successfully registered! Please login. <a href="login.php" >View Results</a></strong>
-             <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-        return $memMsg;
-    }
