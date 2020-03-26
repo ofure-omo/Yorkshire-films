@@ -106,6 +106,7 @@ if(isset($_GET['id']) && !empty($_GET['id']))
 
     <!--Slogan-->
             <div class="flex-container">
+                <div>YORKSHIRE FILMS </br> </div>
                 <div>BROWSE</div>
                 <div>BORROW</div>
                 <div>ENJOY</div>
