@@ -86,7 +86,7 @@ class User_validation {
         $val = ($this->data['password']);
         //hashing with sanitise this
          if(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)){//regular expression
-                $this->addError('password', 'Username must be between 6 and 12 characters and alphanumeric.');
+                $this->addError('password', 'Password must be between 6 and 12 characters and alphanumeric.');
         }   else {
            echo "";
             }
