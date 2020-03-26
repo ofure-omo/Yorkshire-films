@@ -52,7 +52,7 @@ if(isset($_POST['login'])){
         
         
         if (!password_verify($password, $password_hash)) {
-            $loginMsg = "<p style='text-align:center; color: red;'>Wrong password, please try again</p>";
+            $loginMsg = "<p style='text-align:center; color: red;'>Wrong email/password, please try again</p>";
         }
         
         }
