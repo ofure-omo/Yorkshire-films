@@ -105,19 +105,18 @@ class User_validation {
         
     private function validateLibCode() {
         $val = ($this->data['lib_code']);
-        $cleanLibCode = filter_var($val, FILTER_SANITIZE_STRING);
+        $userType = filter_var($val, FILTER_SANITIZE_STRING);
         if (empty($val)){
-            $userTypeMember = $cleanLibCode;
-            echo "";
-        } else if
-            ($cleanLibCode== "eyup"){
-            $userTypeAdmin = $cleanLibCode;
+            ($userType = "Member");
+        } else if 
+            ($userType== "Admin"){
+            $userType = "Admin";
             echo "";
         } else if 
-            ($cleanLibCode= "eebygum") {
-            $userTypeLibrarian = $cleanLibCode; 
+            ($userType== "Librarian"){ 
+            $userType = "Librarian"; 
             echo "";
-        } else { //add if empty code to prevent error message
+        } else {
         $this->addError('lib_code', 'That code is incorrect, please try again or contact an administrator');
         }
     }
