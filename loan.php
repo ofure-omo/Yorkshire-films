@@ -1,9 +1,12 @@
 <?php
 include 'AutoLoader.php';
 
+session_start();
+//echo $_SESSION['User'];
+
 //Added a member through here just so it prints something for me. 
-$member1 = new Member('Jeff12','Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
-$member1 ->setPassword("hello345");
+//$member1 = new Member('Jeff12','Jeff', 'Bezos', 'sellallthethings@bigshop.com', '1964-01-12', '07152745282');
+//$member1 ->setPassword("hello345");
 
 
 if(isset($_GET['id']) && !empty($_GET['id']))
@@ -11,7 +14,7 @@ if(isset($_GET['id']) && !empty($_GET['id']))
    $id = $_GET['id'];
     include_once('connection.php');
    
-    $loan = "INSERT INTO Onloan (fm_ID, user_ID, loan_DATE, due_DATE) VALUES (".$id.", 1, SYSDATE(), DATE_ADD(SYSDATE(), INTERVAL 5 DAY));"; 
+    $loan = "INSERT INTO Onloan (fm_ID, user_ID, loan_DATE, due_DATE) VALUES (".$id.", ".$_SESSION['User'].", SYSDATE(), DATE_ADD(SYSDATE(), INTERVAL 5 DAY));"; 
     $loanresult = mysqli_query($conn, $loan);
     
     $title = "SELECT fm_TITLE FROM Films WHERE fm_ID = '".$id."';";
@@ -38,6 +41,10 @@ if(isset($_GET['id']) && !empty($_GET['id']))
     $row3 = mysqli_fetch_all($imageresult);
     
     $rand = array_rand($row3, 3);
+    
+    $name = "SELECT user_FN FROM Users WHERE user_ID = '".$_SESSION['User']."';";
+    $nameresult = mysqli_query($conn, $name);
+    $namerow = mysqli_fetch_row($nameresult);
 }
 ?>
 
@@ -123,8 +130,8 @@ if(isset($_GET['id']) && !empty($_GET['id']))
             <div>
                 <center><img src="<?php echo $loanimg[0];?>" style='height:500px' ></center>
                 <br>
-                <p style="text-align:center; font-family: 'Sen', sans-serif;"><?php echo $member1->borrowedmem() .  $row1[0] . ".";?></p>
-                <p style="text-align:center; font-family: 'Sen', sans-serif;"><?php echo $member1->dueDate() . $row2[0] . ".";?></p>
+                <p style="text-align:center; font-family: 'Sen', sans-serif;"><?php echo $namerow[0];?> , you have borrowed <?php  echo $row1[0] . ".";?></p>
+                <p style="text-align:center; font-family: 'Sen', sans-serif;">Your due date is <?php echo $row2[0] . ".";?></p>
                 <br>
                 <h3 style="text-align:center; font-family: 'Sen', sans-serif;">Films other users have enjoyed:</h3>
                 

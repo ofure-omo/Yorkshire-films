@@ -2,6 +2,9 @@
 include 'AutoLoader.php';
 include_once 'connection.php';
 
+session_start();
+//echo $_SESSION['User'];
+
 $id = intval($_GET['id']);
 $sql = "SELECT * FROM Films"
         . " INNER JOIN Genres on Films.fm_GENRE = Genres.gn_ID"
@@ -27,7 +30,7 @@ $img4 = $row['image_4'];
 $img5 = $row['image_5'];
 $img6 = $row['image_6'];
 
-$sql2 = "SELECT user_DOB FROM Users WHERE user_ID = 10;";
+$sql2 = "SELECT user_DOB FROM Users WHERE user_ID = '".$_SESSION['User']."';";
 $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 $dob = $row2['user_DOB'];

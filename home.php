@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,6 +25,7 @@
           <li><a href= "Films.php">FILMS</a></li>
           <li><a href= "login.php">LOG IN</a></li>
            <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
+
         </ul>
       </nav>
 
