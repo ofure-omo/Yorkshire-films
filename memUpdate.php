@@ -43,9 +43,9 @@ $stmt = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
 
 <!---------------navbar (normal)-->
                 <ul>
-                    <li><a href= "home.html">HOME</a></li>
-                    <li><a href= "films.html">FILMS</a></li>
-                    <li><a href= "login.html">LOG IN</a></li>
+                    <li><a href= "home.php">HOME</a></li>
+                    <li><a href= "films.php">FILMS</a></li>
+                    <li><a href= "login.php">LOG IN</a></li>
                 </ul>
             </nav>
 
