@@ -47,6 +47,19 @@ $diff = date_diff(date_create($dob), date_create($today));
             top: 0;
             z-index: 2;
         }
+        
+         .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+    font-size: 1.8em;;
+    font-family: 'Sen', sans-serif;
+    background-image: url('Images/blackbackground.png');
+    color: white;
+    }
     </style>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">

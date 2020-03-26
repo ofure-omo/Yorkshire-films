@@ -20,7 +20,7 @@
 
       <!--navbar (normal)-->
         <ul>
-          <li><a href= "home.php">HOME</a></li>
+          <li><a href= "home.php" >HOME</a></li>
           <li><a href= "Films.php">FILMS</a></li>
           <li><a href= "login.php">LOG IN</a></li>
            <li><a href= "MembersAccount.php">MY ACCOUNT</a></li>
@@ -45,6 +45,9 @@
                 <div>ENJOY</div>
                 <div>REPEAT</div>
             </div>
+            <div class="headerLogo">
+      <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
+    </div>
 
             <!--Carousel showing most popular movies-->
             <section>
