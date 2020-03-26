@@ -7,9 +7,6 @@ $email = "";
 $telNo = "";
 $userName = "";
 $password = "";
-$libCode = "";     
-$libCodeRaw = ['', "eebygum", "eyup"];
-$libCodeAlt = ["Member", "Librarian", "Admin"];
 $loginMsg='';
   global $loginMsg;  
         
@@ -24,7 +21,7 @@ $loginMsg='';
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS),
                 $dob = filter_input(INPUT_POST, 'DOB', FILTER_SANITIZE_SPECIAL_CHARS),      
                 $telNo = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_SPECIAL_CHARS),
-                $userType = str_replace('lib_code', $libCodeAlt, $libCodeRaw) );
+                $userType = filter_input(INPUT_POST, 'lib_code', FILTER_SANITIZE_SPECIAL_CHARS) );
 
             
         $new_mem = $pdo->prepare("INSERT INTO Users ( user_UN,  user_FN, user_SN, user_EMAIL, user_DOB, user_TEL, user_TYPE, user_PWD)
