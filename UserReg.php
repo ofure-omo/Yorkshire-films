@@ -20,14 +20,31 @@ include 'PDO_connection.php';
   background-color: grey;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 100px;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+      text-align: center;
+    background-color: black;
+    border-radius: 7px;
+    color: white;
+    font-weight: bolder;
 }       
+
+.button:hover {
+        color: white;
+    background-color: rgb(240, 102, 102);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container-btn {
+    margin-left: 45px;
+}
+
 .pure-control-group {
   width: 25%;
   padding: 12px 20px;
@@ -41,6 +58,37 @@ div.sticky {
   top: 0;
   z-index: 2;
   }
+  
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+    font-size: 1.8em;;
+    font-family: 'Sen', sans-serif;
+    background-image: url('Images/blackbackground.png');
+    color: white;
+  }
+    body {
+            font-family: Arial;
+        }
+        
+        .instruc {
+            text-align: center;
+            text-transform: uppercase;
+            padding-top:40px;
+        }
+        
+        .new-user {
+            margin-left: 50px;
+        }
+        
+        .pure-control-group {
+            width: 400px;
+        }
+
     </style>
 <head>
         <meta charset="UTF-8">
@@ -93,11 +141,11 @@ div.sticky {
       <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
     </div>    
         <body>
-            <div class="sticky">
+           <!-- <div class="sticky">
                 <h1 style="font: 25px Georgia, serif; line-height: 1.8;background-color:grey;" ><center> YORKSHIRE FILMS</center></h1>
-            </div>
+            </div>-->
     <p>    
-    <h3>Enter your details below to start borrowing our films.  </h3>  
+    <h3 class="instruc">Enter your details below to start borrowing our films.  </h3>  
     </p><div><?php echo $loginMsg; ?></div>
 <div class="new-user">
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
@@ -179,7 +227,7 @@ div.sticky {
             
         </div>
     </div>    
-        <div class="pure-form pure-form-aligned">
+        <div class="pure-form pure-form-aligned container-btn">
         <input type="submit" value="Register" name= "submit" class="button">
         </div>
         </form>

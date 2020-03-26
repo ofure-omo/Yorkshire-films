@@ -10,6 +10,25 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
 ?>
 
 <!DOCTYPE html>
+<style>
+    .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+    font-size: 1.8em;;
+    font-family: 'Sen', sans-serif;
+    background-image: url('Images/blackbackground.png');
+    color: white;
+    }
+    
+    body {
+            font-family: Arial;
+        }
+
+</style>
 <html>
 
    <html>
@@ -34,7 +53,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
     
 <!-------------------------------BODY------------------------------------------> 
     <body>
-        <div class="container-sm">
+        
             
            
 <!-----------------------------HAMBURGER NAVBAR------------------------------------------>
@@ -70,6 +89,11 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                 <div>REPEAT</div>
             </div>
 
+<div class="headerLogo">
+      <img src="Images/reel.png", width="100%" height="100px" background-size: cover />
+    </div>
+
+<div class="container-sm">
  <!-------------------------------WELCOME MESSAGE------------------------------------------>
             <h1>Hello! Welcome to the the Admin Portal</h1>
 
