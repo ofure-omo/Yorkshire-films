@@ -3,13 +3,13 @@
 include 'AutoLoader.php';
 include 'PDO_connection.php';
 
-
+ include 'userRegProgram.php';
  if (isset($_POST['submit'])) {
         $validation = new User_validation($_POST);
         $errors = $validation->validateForm();
  }    
  
- include 'userRegProgram.php';
+
 ?>
 
 
