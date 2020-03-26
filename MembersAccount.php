@@ -6,7 +6,7 @@ include 'ReturnLoan.php';
 
 /****PRE POPULATE MEMBER LOAN DETAILS****/
 
-$loanhistory = $pdo->prepare('SELECT * FROM onloan WHERE user_ID = ?');
+$loanhistory = $pdo->prepare('SELECT * FROM onloan INNER JOIN Films ON Films.fm_ID = Onloan.fm_ID WHERE Onloan.user_ID = ?');
 $loanhistory->execute([$_GET['user_ID']]);
 
  /****PRE POPULATE MEMBER DETAILS****/
@@ -169,7 +169,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                                
                                     <?php foreach ($loanhistory as $loan):?>
                         <tr>
-                            <td><?= $loan['fm_ID'] ?></td>
+                            <td><?= $loan['fm_TITLE'] ?></td>
                             <td><?= $loan['loan_DATE'] ?></td>
                             <td><?= $loan['due_DATE'] ?></td>
                             <td>
@@ -192,7 +192,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
 <td>
                                 <div id="returnloan">
                                         <div style="text-align: center">
-                                            <button class="btn btn-primary"  onclick="returnLoan(1)">Return Film</button>
+                                            <button class="btn btn-primary"  onclick="returnLoan(<?= $loan['fm_ID'] ?>)">Return Film</button>
                                         </div>
                                         <br>
                                     </a>
