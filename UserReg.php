@@ -8,12 +8,13 @@ include 'PDO_connection.php';
         $validation = new User_validation($_POST);
         $errors = $validation->validateForm();
  }    
+ include 'userRegProgram.php';
  
  if (!empty($errors)) {
      echo "There was a problem submitting your form. See below for help.";
  }
  
- include 'userRegProgram.php';
+
 ?>
 
 
@@ -63,8 +64,7 @@ div.sticky {
   z-index: 2;
   }
   
-<<<<<<< HEAD
-  .flex-container {
+ .flex-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -94,12 +94,11 @@ div.sticky {
             width: 400px;
         }
 
-=======
-  .error {
+.error {
    color: red;
    font-size: 16px
   }
->>>>>>> 83356d3acafd6347270aa0630aa8d887e7dcb971
+
     </style>
 <head>
         <meta charset="UTF-8">

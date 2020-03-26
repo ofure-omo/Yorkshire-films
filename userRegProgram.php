@@ -22,8 +22,9 @@ $loginMsg='';
                 $dob = filter_input(INPUT_POST, 'DOB', FILTER_SANITIZE_SPECIAL_CHARS),      
                 $telNo = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_SPECIAL_CHARS),
                 $userType = filter_input(INPUT_POST, 'lib_code', FILTER_SANITIZE_SPECIAL_CHARS) );
-
-            
+                    if (empty($userType)){
+                    ($userType = "Member");
+                    }
         $new_mem = $pdo->prepare("INSERT INTO Users ( user_UN,  user_FN, user_SN, user_EMAIL, user_DOB, user_TEL, user_TYPE, user_PWD)
               VALUES (  :username, :userfn, :userln, :email, :dob, :tel, :type, :password)");
 
