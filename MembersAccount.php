@@ -1,9 +1,7 @@
 <?php
 include 'AutoLoader.php';
 include 'AccountProgram.php';
-
 include 'loginProgram.php';
-
 include 'ReturnLoan.php';
 
 /****PRE POPULATE MEMBER LOAN DETAILS****/
@@ -124,7 +122,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                             <th>Date of Birth</th>
                             <th>Contact No.</th>
                             <th>Username</th>
-                            <th>Password</th>
+                            
                             <th></th>
                         </tr>
                         </thead>
@@ -137,7 +135,7 @@ $userDetails = $pdo->prepare('SELECT * FROM Users WHERE user_ID = ?');
                             <td><?= $user['user_DOB'] ?></td>
                              <td><?= $user['user_TEL'] ?></td>
                              <td><?= $user['user_UN'] ?></td>
-                            <td><?= $user['user_PWD'] ?></td>
+                            
                             <td class="actions">
                                 <a href="memUpdate.php?user_ID=<?= $user['user_ID'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                                 <a href="delete.php?id=" class="trash"><i class="fas fa-trash fa-xs"></i></a>

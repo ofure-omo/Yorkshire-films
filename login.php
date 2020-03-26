@@ -69,7 +69,7 @@ include 'loginProgram.php';
              <p class="message">Welcome back to Yorkshire Films <br> Sign in to view the latest Yorkshire films! <br> </p>
          </div> 
          
-              <div><?php echo $loginMsg; ?></div>
+          
         
              <form action= "" method="post" id=form1> 
 
@@ -77,7 +77,9 @@ include 'loginProgram.php';
                  <input type="text" id="email" class="shadow p-3 mb-5 bg-white rounded form" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z]+.com" autofocus required>
                  <span class="error"></span>
                  <input type= "password" id="password"  class="shadow p-3 mb-5 bg-white rounded form" placeholder="Password" name="password"  required> 
-                 <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
+                   <div><?php echo $loginMsg; ?></div>
+                   <p class="forgotten-pass"><a href="">Forgotten your password?</a></p>
+                   
 
                  <button type="submit" id="submit" value="submit" form="form1" name='login' class="form">LOG IN</button>    
              </form>

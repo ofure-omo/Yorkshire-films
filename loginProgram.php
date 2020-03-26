@@ -3,6 +3,15 @@ session_start();
 
 include 'connection.php';
 
+//if a session already exists if not a session is created 
+
+//$uid = isset($_POST['uid']) ? $_POST['uid'] : $_SESSION['uid'];
+//$pwd = isset($_POST['pwd']) ? $_POST['pwd'] : $_SESSION['pwd'];
+
+
+//checking if the password and email match and are in the database
+//checks if the password matches the hashed password on the database
+
 $loginMsg = '';
 
 if(isset($_POST['login'])){
@@ -14,7 +23,7 @@ if(isset($_POST['login'])){
     $loginMsg ='';
     $message ='';
     
-    $query= ("SELECT user_ID, user_PWD, user_TYPE FROM Users WHERE user_EMAIL = '".$email."'");
+    $query= ("SELECT * FROM Users WHERE user_EMAIL = '".$email."'");
     $tbl = mysqli_query($conn, $query);
     if (mysqli_num_rows($tbl) > 0) {
         $row = mysqli_fetch_array($tbl);
@@ -24,34 +33,30 @@ if(isset($_POST['login'])){
        // $useremail= $row['user_EMAIL'];
   
         
-        if (/*password_verify($password, $password_hash) &&*/ $usertype === 'Member') {
-           
-           header('Location: MembersAccount.php?user_ID='.$userid);
-          
-         /*if(is_array($row)){
-          $_SESSION["user_ID"] = $row['user_ID'];
-          } else {
-          $message = "Invalid Username or Password!";
-          }
-          if(isset($_SESSION["user_ID"])) {
-              header("Location: MembersAccount.php");
+        if (password_verify($password, $password_hash) && $usertype === 'Member') {
+            
+
+              header('Location: MembersAccount.php?user_ID='.$userid);
               
-          }*/
+          }
            
             //create a session that will store the user_ID
-        }
-        elseif (/*password_verify($password, $password_hash) && */$usertype === 'Librarian') {
+        
+        elseif (password_verify($password, $password_hash) && $usertype === 'Librarian') {
             header('Location: LibrarianAccount.php?user_ID='.$userid);
             
-        } elseif (/*password_verify($password, $password_hash) && */$usertype === 'Admin') {
-            header('Location: adminaccountpage.php?user_ID='.$userid);
+        } elseif (password_verify($password, $password_hash) && $usertype === 'Admin') {
+           // header('Location: adminaccountpage.php?user_ID='.$userid);
+              header('Location: adminaccountpage.php?user_ID='.$userid);
         }
+        
         
         if (!password_verify($password, $password_hash)) {
-            $loginMsg = "<h3>Wrong password/email, please try again</h3>";
+            $loginMsg = "<p style='text-align:center; color: red;'>Wrong password, please try again</p>";
         }
         
         }
+        
         
     }
     
