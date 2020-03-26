@@ -9,6 +9,10 @@ include 'PDO_connection.php';
         $errors = $validation->validateForm();
  }    
  
+ if (!empty($errors)) {
+     echo "There was a problem submitting your form. See below for help.";
+ }
+ 
  include 'userRegProgram.php';
 ?>
 
@@ -40,6 +44,11 @@ div.sticky {
   position: sticky;
   top: 0;
   z-index: 2;
+  }
+  
+  .error {
+   color: red;
+   font-size: 16px
   }
     </style>
 <head>
