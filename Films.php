@@ -1,6 +1,9 @@
 <?php
 include 'AutoLoader.php';
 include_once 'connection.php';
+
+session_start();
+//echo $_SESSION['User'];
 ?>
 
 <!DOCTYPE html>

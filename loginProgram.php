@@ -35,7 +35,7 @@ if(isset($_POST['login'])){
         
         if (password_verify($password, $password_hash) && $usertype === 'Member') {
             
-
+              $_SESSION['User'] = $userid;
               header('Location: MembersAccount.php?user_ID='.$userid);
               
           }
